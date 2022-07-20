@@ -1,0 +1,54 @@
+require("nvim-tree").setup({
+  open_on_setup = true,
+  disable_netrw = true,
+  hijack_netrw = true,
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+    show_on_dirs = true
+  },
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+    height = 30,
+    number = false,
+    relativenumber =false,
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+        { key = "h", action = "close_node" },
+        { key = "v", action = "vsplit" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+    icons = {
+      webdev_colors = true,
+      git_placement = "before",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true
+      },
+      glyphs = {
+        git = {
+          unstaged = "U",
+          staged = "S",
+          ignored = "﫸",
+        }
+      }
+    }
+  },
+  filters = {
+    dotfiles = false,
+  },
+})
+
+require('nvim-web-devicons').setup {
+  default = true
+}
+
