@@ -14,6 +14,14 @@ return require'packer'.startup(function()
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use {
+    'ellisonleao/glow.nvim',
+    config = function()
+      require('glow').setup({
+        glow_install_path = "/usr/bin" -- might end up somewhere else depending on the os
+      })
+      end
+  }
+  use {
     'nvim-telescope/telescope-fzf-native.nvim', 
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
   }

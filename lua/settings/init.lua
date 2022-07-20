@@ -44,6 +44,10 @@ keymap('n', '<C-w>', [[<Cmd> :q <CR>]], opts)
 keymap('i', '<C-w>', [[<Cmd> :q <CR>]], opts)
 keymap('v', '<C-w>', [[<Cmd> :q <CR>]], opts)
 
+-- markdown preview toggle
+keymap('n', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
+keymap('i', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
+
 -- smart delete
 local function delete_special()
     local line_data = vim.api.nvim_win_get_cursor(0) -- returns {row, col}

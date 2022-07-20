@@ -4,7 +4,7 @@ require("nvim-tree").setup({
   hijack_netrw = true,
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 500,
     show_on_dirs = true
   },
