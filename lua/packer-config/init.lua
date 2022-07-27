@@ -1,4 +1,3 @@
-
 return require'packer'.startup(function()
   use 'wbthomason/packer.nvim'
   use 'EdenEast/nightfox.nvim'
@@ -13,13 +12,14 @@ return require'packer'.startup(function()
   use 'hrsh7th/cmp-path'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'lewis6991/gitsigns.nvim'
   use {
     'ellisonleao/glow.nvim',
-    config = function()
+    config = function ()
       require('glow').setup({
         glow_install_path = "/usr/bin" -- might end up somewhere else depending on the os
       })
-      end
+    end
   }
   use {
     'nvim-telescope/telescope-fzf-native.nvim', 
