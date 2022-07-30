@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 local set = vim.opt
 
 set.number = true
@@ -7,13 +10,14 @@ set.softtabstop = 2
 set.expandtab = true
 set.shiftwidth = 2
 set.smarttab = true
-set.wildmode=longest,list
-set.clipboard='unnamedplus'
+set.wildmode = longest,list
+set.clipboard = 'unnamedplus'
 set.ttyfast = true
-set.mouse='a'
-set.encoding='UTF-8'
+set.mouse = 'a'
+set.encoding = 'UTF-8'
 set.smartcase = true
 set.completeopt = menu,menuone,noselect
+set.updatetime = 2000
 
 local opts = { noremap = true, silent = true }
 

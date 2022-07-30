@@ -31,4 +31,3 @@ once done, source [init.lua](./init.lua), perform a `:PackerSync` command
 - barbar.nvim / nvim-tabline - tab management
 - galaxyline/lualine - status line
 - glepnir- dashboard
-- vgit/lazygit/vim-gitgutter - git
