@@ -8,7 +8,7 @@ This repo serves two purposes
 
 To get up and running, clone this repo to `~/.config/` and get the following:
 
-## binaries
+## Binaries
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - LSP servers:
   - bash language server
@@ -19,14 +19,14 @@ To get up and running, clone this repo to `~/.config/` and get the following:
 ## Miscelaneous
 Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 
 
-**NB** If using WSL2, the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
-
 once done, source [init.lua](./init.lua), perform a `:PackerSync` command 
+
+### WSL2 Specific
+With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
 
 # Suggestions
 - lsp saga - code actions
 - telescope-repos - loads git repos to telescope
-- neoclip - clip history
 - mfussenegger/nvim-dap - debugger
 - barbar.nvim / nvim-tabline - tab management
 - galaxyline/lualine - status line

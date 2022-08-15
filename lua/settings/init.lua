@@ -48,9 +48,14 @@ keymap('n', '<C-w>', [[<Cmd> :q <CR>]], opts)
 keymap('i', '<C-w>', [[<Cmd> :q <CR>]], opts)
 keymap('v', '<C-w>', [[<Cmd> :q <CR>]], opts)
 
+keymap('n', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+keymap('v', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+keymap('i', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+
 -- markdown preview toggle
 keymap('n', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
 keymap('i', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
+keymap('v', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
 
 -- smart delete
 local function delete_special()

@@ -36,4 +36,10 @@ return require'packer'.startup(function()
 	use {
 		'akinsho/toggleterm.nvim', tag = 'v2.*'
  	}
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      'nvim-telescope/telescope.nvim'
+    }
+  }
 end)
