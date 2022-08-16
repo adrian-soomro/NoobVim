@@ -33,6 +33,10 @@ return require'packer'.startup(function()
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+  use {
+    'romgrk/barbar.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
 	use {
 		'akinsho/toggleterm.nvim', tag = 'v2.*'
  	}

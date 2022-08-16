@@ -31,7 +31,7 @@ keymap('n', '<C-f>', [[<Cmd> lua require('telescope.builtin').current_buffer_fuz
 keymap('n', '<C-F>', [[<Cmd> lua require('telescope.builtin').live_grep()<CR>]], opts)
 
 -- nvim-tree 
-keymap('n', '<C-b>', ':NvimTreeToggle <CR>', opts)
+keymap('n', '<A-b>', ':NvimTreeToggle <CR>', opts)
 
 -- window navigation
 keymap('n', '<C-h>', '<C-w>h', opts)
