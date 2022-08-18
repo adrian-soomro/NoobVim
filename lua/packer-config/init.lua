@@ -41,9 +41,15 @@ return require'packer'.startup(function()
 		'akinsho/toggleterm.nvim', tag = 'v2.*'
  	}
   use {
-    "AckslD/nvim-neoclip.lua",
+    'AckslD/nvim-neoclip.lua',
     requires = {
       'nvim-telescope/telescope.nvim'
     }
+  }
+  use {
+    'windwp/nvim-autopairs',
+    config = function ()
+      require('nvim-autopairs').setup({})
+    end
   }
 end)

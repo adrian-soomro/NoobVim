@@ -28,6 +28,5 @@ With regards to the [font requirement](#Miscelaneous) - the fonts need to be ins
 - lsp saga - code actions
 - telescope-repos - loads git repos to telescope
 - mfussenegger/nvim-dap - debugger
-- barbar.nvim / nvim-tabline - tab management
 - galaxyline/lualine - status line
 - glepnir- dashboard
