@@ -25,7 +25,6 @@ once done, source [init.lua](./init.lua), perform a `:PackerSync` command
 With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
 
 # Suggestions
-- lsp saga - code actions
 - telescope-repos - loads git repos to telescope
 - mfussenegger/nvim-dap - debugger
 - glepnir- dashboard
