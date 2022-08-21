@@ -14,6 +14,7 @@ return require 'packer'.startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'lewis6991/gitsigns.nvim'
   use 'windwp/nvim-autopairs'
+  use 'glepnir/dashboard-nvim'
   use {
     'ellisonleao/glow.nvim',
     config = function()
@@ -59,5 +60,13 @@ return require 'packer'.startup(function()
   use {
     "glepnir/lspsaga.nvim",
     branch = "main",
+  }
+  use {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    module = "persistence",
+    config = function()
+      require("persistence").setup()
+    end
   }
 end)

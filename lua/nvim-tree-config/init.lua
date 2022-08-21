@@ -1,5 +1,6 @@
 require("nvim-tree").setup({
   open_on_setup = true,
+  ignore_ft_on_setup = { 'dashboard' },
   disable_netrw = true,
   hijack_netrw = true,
   git = {
@@ -13,7 +14,7 @@ require("nvim-tree").setup({
     width = 30,
     height = 30,
     number = false,
-    relativenumber =false,
+    relativenumber = false,
     adaptive_size = true,
     mappings = {
       list = {
@@ -54,4 +55,3 @@ require("nvim-tree").setup({
 require('nvim-web-devicons').setup {
   default = true
 }
-

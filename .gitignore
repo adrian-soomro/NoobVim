@@ -1,4 +1,5 @@
 lua-language-server/
-plugin/
+**/packer_compiled.lua
 plugged/
 .netrwhist
+sessions/

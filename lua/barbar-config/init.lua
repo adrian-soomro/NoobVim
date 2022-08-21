@@ -38,8 +38,6 @@ map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 --                 :BufferCloseAllButCurrentOrPinned
 --                 :BufferCloseBuffersLeft
 --                 :BufferCloseBuffersRight
--- Close buffer
-map('n', '<C-w>', '<Cmd>BufferClose<CR>', opts)
 -- Magic buffer-picking mode
 map('n', '<leader>p', '<Cmd>BufferPick<CR>', opts)
 

@@ -44,10 +44,12 @@ keymap('n', '<C-s>', [[<Cmd> :w <CR>]], opts)
 keymap('i', '<C-s>', [[<Cmd> :w <CR>]], opts)
 keymap('v', '<C-s>', [[<Cmd> :w <CR>]], opts)
 
-keymap('n', '<C-w>', [[<Cmd> :q <CR>]], opts)
-keymap('i', '<C-w>', [[<Cmd> :q <CR>]], opts)
-keymap('v', '<C-w>', [[<Cmd> :q <CR>]], opts)
+-- close buffer
+keymap('n', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
+keymap('i', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
+keymap('v', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
 
+-- clipboard with history
 keymap('n', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
 keymap('v', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
 keymap('i', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
