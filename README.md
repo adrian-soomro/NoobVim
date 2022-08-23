@@ -27,4 +27,3 @@ With regards to the [font requirement](#Miscelaneous) - the fonts need to be ins
 # Suggestions
 - telescope-repos - loads git repos to telescope
 - mfussenegger/nvim-dap - debugger
-- glepnir- dashboard
