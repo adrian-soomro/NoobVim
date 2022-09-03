@@ -1,55 +1,91 @@
-local keymap = vim.keymap.set
 local saga = require('lspsaga')
-local opts = { silent = true }
+saga.init_lsp_saga({
+  code_action_icon = "",
+  code_action_lightbulb = {
+    sign = false
+  },
+  finder_action_keys = {
+    open = "<cr>",
+    quit = "<esc>",
+    vsplit = "v"
+  },
+  code_action_keys = {
+    quit = "<esc>"
+  },
+  definition_action_keys = {
+    quit = "<esc>"
+  },
+  rename_action_quit = "<esc>",
+  symbol_in_winbar = {
+    in_custom = true,
+    enable = true,
+    separator = '  ',
+    show_file = true,
+    click_support = true,
+  },
+  show_outline = {
+    win_position = 'right',
+    --set special filetype win that outline window split.like NvimTree neotree
+    -- defx, db_ui
+    win_with = '',
+    win_width = 30,
+    auto_enter = true,
+    auto_preview = true,
+    virt_text = '┃',
+    jump_key = 'o',
+    -- auto refresh when change buffer
+    auto_refresh = true,
+  },
+})
 
-saga.init_lsp_saga()
+-- winbar setup
+local function get_file_name(include_path)
+    local file_name = require('lspsaga.symbolwinbar').get_file_name()
+    if vim.fn.bufname '%' == '' then return '' end
+    if include_path == false then return file_name end
+    -- Else if include path: ./lsp/saga.lua -> lsp > saga.lua
+    local sep = vim.loop.os_uname().sysname == 'Windows' and '\\' or '/'
+    local path_list = vim.split(string.gsub(vim.fn.expand '%:~:.:h', '%%', ''), sep)
+    local file_path = ''
+    for _, cur in ipairs(path_list) do
+        file_path = (cur == '.' or cur == '~') and '' or
+                    file_path .. cur .. ' ' .. '%#LspSagaWinbarSep#>%*' .. ' %*'
+    end
+    return file_path .. file_name
+end
 
+local function config_winbar_or_statusline()
+    local exclude = {
+        ['teminal'] = true,
+        ['toggleterm'] = true,
+        ['prompt'] = true,
+        ['NvimTree'] = true,
+        ['dashboard'] = true,
+        ['help'] = true,
+    } -- Ignore float windows and exclude filetype
+    if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+        vim.wo.winbar = ''
+    else
+        local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
+        local sym
+        if ok then sym = lspsaga.get_symbol_node() end
+        local win_val = ''
+        win_val = get_file_name(true) -- set to true to include path
+        if sym ~= nil then win_val = win_val .. sym end
+        vim.wo.winbar = win_val
+        -- to enable updates in statusline
+        -- vim.wo.stl = win_val
+    end
+end
 
--- Code action
-keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", opts)
+local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved' }
 
--- Rename
-keymap("n", "R", "<cmd>Lspsaga rename<CR>", opts)
+vim.api.nvim_create_autocmd(events, {
+    pattern = '*',
+    callback = function() config_winbar_or_statusline() end,
+})
 
--- Definition preview
-keymap("n", "gd", "<cmd>Lspsaga preview_definition<CR>", opts)
--- Lsp finder find the symbol definition implement reference
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-
--- Hover Doc
-keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-
--- Signature help
-keymap("n", "gs", "<Cmd>Lspsaga signature_help<CR>", opts)
-
--- Show line diagnostics
-keymap("n", "<leader>sd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-
--- Show cursor diagnostic
-keymap("n", "<leader>sd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-
--- Diagnsotic jump
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-
--- Only jump to error
-keymap("n", "[E", function()
-  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-keymap("n", "]E", function()
-  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-
--- Outline
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
-
-local action = require("lspsaga.action")
--- scroll in hover doc or  definition preview window
-vim.keymap.set("n", "<C-f>", function()
-  action.smart_scroll_with_saga(1)
-end, opts)
--- scroll in hover doc or  definition preview window
-vim.keymap.set("n", "<C-b>", function()
-  action.smart_scroll_with_saga(-1)
-end, opts)
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'LspsagaUpdateSymbol',
+    callback = function() config_winbar_or_statusline() end,
+})

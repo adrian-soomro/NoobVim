@@ -5,12 +5,12 @@ require('bufferline').setup({
   closable = true,
   clickable = true,
   icons = 'both',
-	icon_separator_active = '▎',
+  icon_separator_active = '▎',
   icon_separator_inactive = '▎',
   icon_close_tab = '',
   icon_close_tab_modified = '●',
   icon_pinned = '車',
-	insert_at_end = true,
+  insert_at_end = true,
 })
 
 local map = vim.api.nvim_set_keymap
@@ -50,7 +50,7 @@ local nvim_tree_events = require('nvim-tree.events')
 local bufferline_state = require('bufferline.state')
 
 local function get_tree_size()
-  return require'nvim-tree.view'.View.width
+  return require 'nvim-tree.view'.View.width
 end
 
 nvim_tree_events.subscribe('TreeOpen', function()

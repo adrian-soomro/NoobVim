@@ -1,27 +1,8 @@
--- Mappings
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
 local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings
-  -- see :help vim.lsp.* for docs on the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- lua config
 
 USER = vim.fn.expand('$USER')
 
@@ -58,13 +39,11 @@ require 'lspconfig'.sumneko_lua.setup {
       }
     }
   },
-  on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require('lspconfig')['bashls'].setup {
-  on_attach = on_attach,
+require('lspconfig').bashls.setup {
   flags = lsp_flags,
   capabilities = capabilities,
 }

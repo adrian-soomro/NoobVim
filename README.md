@@ -12,6 +12,7 @@ To get up and running, clone this repo to your `~/.config/` and get the followin
 - LSP servers:
   - bash language server
      - shellcheck
+
 	- [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
 - [glow](https://github.com/charmbracelet/glow#installation)
 
@@ -27,3 +28,6 @@ once done, source [init.lua](./init.lua), perform a `:PackerSync` command
 # Suggestions
 - telescope-repos - loads git repos to telescope
 - mfussenegger/nvim-dap - debugger
+
+# TODO
+- fix lspsaga outline window not showing objects

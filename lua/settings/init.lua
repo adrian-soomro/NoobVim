@@ -18,6 +18,7 @@ set.encoding = 'UTF-8'
 set.smartcase = true
 set.completeopt = menu,menuone,noselect
 set.updatetime = 2000
+set.timeoutlen = 300
 
 local opts = { noremap = true, silent = true }
 
