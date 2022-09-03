@@ -47,3 +47,8 @@ require('lspconfig').bashls.setup {
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
+require('lspconfig').tsserver.setup {
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
