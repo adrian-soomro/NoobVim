@@ -63,3 +63,8 @@ require('lspconfig').dockerls.setup {
   capabilities = capabilities,
 }
 
+require('lspconfig').terraformls.setup {
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
