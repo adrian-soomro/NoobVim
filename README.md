@@ -16,6 +16,7 @@ To get up and running, clone this repo to your `~/.config/` and get the followin
   - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
   - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
   - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
+  - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
 
 ## Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 

@@ -57,3 +57,9 @@ require('lspconfig').marksman.setup {
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
+require('lspconfig').dockerls.setup {
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
