@@ -11,10 +11,11 @@ To get up and running, clone this repo to your `~/.config/` and get the followin
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [glow](https://github.com/charmbracelet/glow#installation)
 - LSP servers:
-  - [bash language server](https://github.com/typescript-language-server/typescript-language-server#installing)
-     - [shellcheck](https://github.com/typescript-language-server/typescript-language-server#installing)
+  - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
+     - [shellcheck](https://github.com/koalaman/shellcheck#installing)
   - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
   - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
+  - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
 
 ## Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 

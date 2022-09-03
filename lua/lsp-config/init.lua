@@ -52,3 +52,8 @@ require('lspconfig').tsserver.setup {
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
+require('lspconfig').marksman.setup {
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
