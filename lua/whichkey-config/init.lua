@@ -119,6 +119,9 @@ local leaderMapping = {
   },
   f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format file" },
   o = { "<cmd>LSoutlineToggle<CR>", "Toggle lspsaga outline" },
+  ['<F5>'] = {
+    "<cmd>RunFile<cr>", "Run current file"
+  }
 }
 
 local gs = require('gitsigns')
@@ -141,6 +144,9 @@ local mapping = {
       return '<Ignore>'
     end, "Jump to next hunk" },
     d = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Jump to next diagnostic" }
+  },
+  ['<F5>'] = {
+    "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project"
   }
 }
 

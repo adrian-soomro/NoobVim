@@ -76,4 +76,20 @@ return require 'packer'.startup(function()
       require('Comment').setup()
     end
   }
+  use {
+    'CRAG666/code_runner.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('code_runner').setup({
+        mode = 'float',
+        -- put here the commands by filetype
+        filetype = {
+          java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
+          python = "python3 -u",
+          typescript = "node $file",
+          javascript = "node $file",
+          rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt"
+        }
+      })
+    end }
 end)

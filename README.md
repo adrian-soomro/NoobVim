@@ -29,6 +29,11 @@ once done, source [init.lua](./init.lua) and perform a `:PackerSync` command
 - With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
 - Installing [VcXsrv](https://youtu.be/_MgrjgQqDcE?t=755) is highly recommended - this will allow you to share os clipboard between WSL2 host and the WSL2 instance, so that it can be used in nvim, just note that you'll also need to set up `DISPLAY` env var in your bash/zsh.rc and [pass `-ac` as additional argument to VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502345378)
 
+# Using code runner
+you can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
+
+*NB* you'll need to be in the project's directory for this to work as expected.
+
 # Suggestions
 - telescope-repos - loads git repos to telescope
 - mfussenegger/nvim-dap - debugger
