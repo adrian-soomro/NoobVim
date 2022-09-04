@@ -68,3 +68,9 @@ require('lspconfig').terraformls.setup {
   capabilities = capabilities,
 }
 
+-- can support snippets, but needs enabling
+require('lspconfig').jsonls.setup {
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+

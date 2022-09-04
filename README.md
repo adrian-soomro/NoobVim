@@ -18,6 +18,7 @@ To get up and running, clone this repo to your `~/.config/` and get the followin
   - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
   - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
   - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
+  - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
 
 ## Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 
