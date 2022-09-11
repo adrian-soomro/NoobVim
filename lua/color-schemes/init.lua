@@ -1,3 +1,7 @@
-require('nightfox').setup({})
+require('nightfox').setup({
+  options = {
+    dim_inactive = true,
+  }
+})
 
 vim.cmd('colorscheme nordfox')
