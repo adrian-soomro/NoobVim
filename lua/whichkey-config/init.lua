@@ -117,10 +117,17 @@ local leaderMapping = {
     name = "Show",
     d = { "<cmd>Lspsaga show_line_diagnostics | Lspsaga show_cursor_diagnostics<cr>", "Show line & cursor diagnostics" },
   },
+  i = {
+    name = "Insert",
+    b = { "<cmd>lua require 'dap'.toggle_breakpoint()<cr>", "Insert breakpoint" },
+  },
   f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format file" },
-  o = { "<cmd>LSoutlineToggle<CR>", "Toggle lspsaga outline" },
+  o = {
+    name = "Open",
+    o = { "<cmd>LSoutlineToggle<CR>", "Toggle lspsaga outline" },
+  },
   ['<F5>'] = {
-    "<cmd>RunFile<cr>", "Run current file"
+    "<cmd>lua require 'dap'.continue()<cr>", "Continue / Start debug session"
   }
 }
 
@@ -147,6 +154,15 @@ local mapping = {
   },
   ['<F5>'] = {
     "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project"
+  },
+  ['<F8>'] = {
+    "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)"
+  },
+  ['<F9>'] = {
+    "<cmd>lua require 'dap'.step_into()<cr>", "Step into (debug)"
+  },
+  ['<F10>'] = {
+    "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)"
   }
 }
 
