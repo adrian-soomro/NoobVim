@@ -18,6 +18,10 @@ return require 'packer'.startup(function()
   use 'folke/which-key.nvim'
   use 'mfussenegger/nvim-dap'
   use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim'
+  }
+  use {
     'rcarriga/nvim-dap-ui',
     requires = { 'mfussenegger/nvim-dap' }
   }

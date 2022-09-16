@@ -103,6 +103,7 @@ local leaderMapping = {
     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>", "Undo stage hunk" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", "Preview hunk" },
     d = { "<cmd>lua require 'gitsigns'.diffthis()<CR>", "View diff of this file" },
+    D = { "<cmd>DiffviewOpen<CR>", "Diff of the repo" },
   },
   g = {
     name = "Go to",
@@ -163,6 +164,9 @@ local mapping = {
   },
   ['<F10>'] = {
     "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)"
+  },
+  ['<esc>'] = {
+    "<cmd>tabclose<cr>", "Close current tab (window)"
   }
 }
 
