@@ -17,6 +17,7 @@ return require 'packer'.startup(function()
   use 'glepnir/dashboard-nvim'
   use 'folke/which-key.nvim'
   use 'mfussenegger/nvim-dap'
+  use 'nvim-telescope/telescope-dap.nvim'
   use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim'
@@ -109,5 +110,11 @@ return require 'packer'.startup(function()
     'microsoft/vscode-js-debug',
     opt = true,
     run = "npm install --legacy-peer-deps && npm run compile"
+  }
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function()
+      require('nvim-dap-virtual-text').setup({})
+    end
   }
 end)
