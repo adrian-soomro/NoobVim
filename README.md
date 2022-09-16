@@ -2,9 +2,13 @@
 
 A nvim config for absolute ~~noobs~~ beginners
 
-# Reqs
+# 🎯 Aim
+To provide easy transition from mainstream IDEs into NeoVim
+
+# 📜 Requirements
 You'll need to be on a *Nix system, WSL2 works too
 
+# 🚀 Getting started
 To get up and running, clone this repo to your `~/.config/` and get the following:
 
 ## Binaries
@@ -20,7 +24,12 @@ To get up and running, clone this repo to your `~/.config/` and get the followin
   - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
   - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
 
-## Miscelaneous
+# Using code runner
+you can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
+
+*NB* you'll need to be in the project's directory for this to work as expected.
+
+## ❓ Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 
 
 once done, source [init.lua](./init.lua) and perform a `:PackerSync` command 
@@ -28,15 +37,10 @@ once done, source [init.lua](./init.lua) and perform a `:PackerSync` command
 ### WSL2 Specific
 - With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
 - Installing [VcXsrv](https://youtu.be/_MgrjgQqDcE?t=755) is highly recommended - this will allow you to share os clipboard between WSL2 host and the WSL2 instance, so that it can be used in nvim, just note that you'll also need to set up `DISPLAY` env var in your bash/zsh.rc and [pass `-ac` as additional argument to VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502345378)
-
-# Using code runner
-you can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
-
-*NB* you'll need to be in the project's directory for this to work as expected.
+- Accessing your WSL2 instance through the windows [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701) app is recommended, as this terminal emulator supports italics and other styles of text, while having richer support for nerd-fonts
 
 # Suggestions
 - telescope-repos - loads git repos to telescope
-- mfussenegger/nvim-dap - debugger
 
 # TODO
 - fix lspsaga outline window not showing objects
