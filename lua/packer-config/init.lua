@@ -18,6 +18,7 @@ return require 'packer'.startup(function()
   use 'folke/which-key.nvim'
   use 'mfussenegger/nvim-dap'
   use 'nvim-telescope/telescope-dap.nvim'
+  use 'cljoly/telescope-repo.nvim'
   use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim'

@@ -24,6 +24,10 @@ db.custom_center = {
 			require("persistence").load({ last = true })
 		end,
 		shortcut = '   ' },
+	{ icon = ' ',
+		desc = 'Open a git project                        ',
+		action = 'Telescope repo list',
+		shortcut = '   ' },
 	{ icon = ' ',
 		desc = 'Find File                                 ',
 		action = 'Telescope find_files find_command=rg,--hidden,--files',

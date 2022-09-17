@@ -12,8 +12,9 @@ You'll need to be on a *Nix system, WSL2 works too
 To get up and running, clone this repo to your `~/.config/` and get the following:
 
 ## Binaries
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [glow](https://github.com/charmbracelet/glow#installation)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope
+- [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
+- [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
 - LSP servers (skip any that you're not interested in):
   - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
      - [shellcheck](https://github.com/koalaman/shellcheck#installing)
@@ -39,9 +40,5 @@ once done, source [init.lua](./init.lua) and perform a `:PackerSync` command
 - Installing [VcXsrv](https://youtu.be/_MgrjgQqDcE?t=755) is highly recommended - this will allow you to share os clipboard between WSL2 host and the WSL2 instance, so that it can be used in nvim, just note that you'll also need to set up `DISPLAY` env var in your bash/zsh.rc and [pass `-ac` as additional argument to VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502345378)
 - Accessing your WSL2 instance through the windows [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701) app is recommended, as this terminal emulator supports italics and other styles of text, while having richer support for nerd-fonts
 
-# Suggestions
-- telescope-repos - loads git repos to telescope
-
 # TODO
-- fix lspsaga outline window not showing objects
 - configure luasnip 
