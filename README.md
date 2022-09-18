@@ -101,7 +101,10 @@ NoobVim uses [which-key plugin](https://github.com/folke/which-key.nvim) to keep
 </details>
 
 # 🚀 Getting started
-To get up and running, clone this repo to your `~/.config/` and get the following:
+To get up and running, 
+1) clone this repo to your `~/.config/` directory,
+2) rename it to `nvim` so that the contents of this repo are under `~/.config/nvim/` directory
+3) and get the following:
 
 ## Binaries
 - [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope
