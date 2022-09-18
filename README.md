@@ -28,38 +28,37 @@ Coming into Vim/Nvim, we'll need to let go of the notion that every file is open
 
 [This article](https://alpha2phi.medium.com/neovim-for-beginners-managing-buffers-91367668ce7) does a good job of summing up the differences, but a TL;DR version:
 
-- A buffer == file loaded to memory for editing, the file is unchanged until you save (`:w` in NORMAL mode or `Ctrl+s` in any other mode) it
+- A buffer == file loaded to memory for editing, the file is unchanged until you save it (`:w` in NORMAL mode or `Ctrl+s` in any other mode)
 - A window == a way to see a buffer, there might be multiple windows looking at one buffer
 - A tab == a collection of windows
 
 ## Special key notation
 special keys have a short notation in vim, goes as follows:
 
-| Notation      | Key                                                         |
-|---------------|-------------------------------------------------------------|
-| <BS>          | Backspace                                                   |
-| <Tab>         | Tab                                                         |
-| <C>           | Control / Command                                           |
-| <A>           | Alt / Option                                                |
-| <leader>      | Up to the user - NoobVim's default is `space` 
-| <CR>          | Enter                                                       |
-| <Enter>       | Enter                                                       |
-| <Return>      | Enter                                                       |
-| <Esc>         | Escape                                                      |
-| <Space>       | Space                                                       |
-| <Up>          | Up arrow                                                    |
-| <Down>        | Down arrow                                                  |
-| <Left>        | Left arrow                                                  |
-| <Right>       | Right arrow                                                 |
-| <F1> - <F12>  | Function keys 1 to 12                                       |
-| #1, #2..#9,#0 | Function keys F1 to F9, F10                                 |
-| <Insert>      | Insert                                                      |
-| <Del>         | Delete                                                      |
-| <Home>        | Home                                                        |
-| <End>         | End                                                         |
-| <PageUp>      | Page-Up                                                     |
-| <PageDown>    | Page-Down                                                   |
-| <bar>         | the `|` character, which otherwise needs to be escaped `\|` |
+| Notation         | Key                                                           |
+|------------------|---------------------------------------------------------------|
+| `<BS>`           | Backspace                                                     |
+| `<Tab>`          | Tab                                                           |
+| `<C>`            | Control / Command                                             |
+| `<A>`            | Alt / Option                                                  |
+| `<leader>`       | Up to the user - NoobVim's default is `space`                 |
+| `<CR>`           | Enter                                                         |
+| `<Enter>`        | Enter                                                         |
+| `<Return>`       | Enter                                                         |
+| `<Esc>`          | Escape                                                        |
+| `<Space>`        | Space                                                         |
+| `<Up>`           | Up arrow                                                      |
+| `<Down>`         | Down arrow                                                    |
+| `<Left>`         | Left arrow                                                    |
+| `<Right>`        | Right arrow                                                   |
+| `<F1>` - `<F12>` | Function keys 1 to 12                                         |
+| `<Insert>`       | Insert                                                        |
+| `<Del>`          | Delete                                                        |
+| `<Home>`         | Home                                                          |
+| `<End>`          | End                                                           |
+| `<PageUp>`       | Page-Up                                                       |
+| `<PageDown>`     | Page-Down                                                     |
+| `<bar>`          | the `\|` character, which otherwise needs to be escaped `\\|` |
 
 ## Keybindings (shortcuts)
 
@@ -78,15 +77,19 @@ which can be read like this:
 
 or in other words: pressing `gcc` while in NORMAL mode, will result in calling a function that'll invoke the toggle current line functionality of the Comment plugin
 
+### Keybinding scopes
+
 Keybindings have scopes. You can have global keybindings that'll be available for a particular mode in any buffer, or you can scope them to particular buffers.
 This is very handy, as you might want to have specific options only in certain scenarios. E.g it'd probably make sense to only have the shortcut to open / go to a file, when you're in a file viewer of sorts, rather than in every buffer.
 
 ### Example of scoped keybindings
 
 Globaly scoped keybindings
+
 ![global](./docs/images/keybindings/global.PNG)
 
 Locally scoped keybindings - to the 'DiffviewFilePanel' buffer
+
 ![scoped](./docs/images/keybindings/scoped.PNG)
 
 Notice that the globally scoped keybindings are present in the buffer scoped ones.
