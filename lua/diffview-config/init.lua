@@ -23,9 +23,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     local mapping = {
       ["<tab>"]   = { actions.select_next_entry, "Open the diff for the next file" },
       ["<s-tab>"] = { actions.select_prev_entry, "Open the diff for the previous file" },
+      ["<cr>"]    = { actions.select_entry, "Open the diff for the selected entry." },
       j           = { actions.next_entry, "Bring the cursor to the next file entry" },
       k           = { actions.prev_entry, "Bring the cursor to the previous file entry." },
-      ["<cr>"]    = { actions.select_entry, "Open the diff for the selected entry." },
       o           = { actions.select_entry, "Open the diff for the selected entry." },
     }
 
@@ -127,28 +127,52 @@ require("diffview").setup({
     DiffviewOpen = {},
     DiffviewFileHistory = {},
   },
-  hooks = {}, -- See ':h diffview-config-hooks'
+  hooks = {
+    diff_buf_read = function(bufnr)
+      local leader_mapping = {
+        g = {
+          f = { actions.goto_file_tab, "Open the file in a new split in the previous tabpage" }
+        },
+        c = {
+          name = "Conflict",
+          o = { actions.conflict_choose("ours"), "Choose the OURS version of a conflict" },
+          t = { actions.conflict_choose("theirs"), "Choose the THEIRS version of a conflict" },
+          b = { actions.conflict_choose("base"), "Choose the BASE version of a conflict" },
+          a = { actions.conflict_choose("all"), "Choose all the versions of a conflict" },
+          d = { actions.conflict_choose("none"), "Delete the conflict region" },
+        },
+      }
+      local mapping = {
+        ["<tab>"]   = { actions.select_next_entry, "Open the diff for the next file" },
+        ["<s-tab>"] = { actions.select_prev_entry, "Open the diff for the previous file" },
+        ["[c"]      = { actions.prev_conflict, "In the merge_tool: jump to the previous conflict" },
+        ["]c"]      = { actions.next_conflict, "In the merge_tool: jump to the next conflict" },
+      }
+
+      local leader_opts = {
+        mode = "n", -- NORMAL mode
+        prefix = "<leader>",
+        buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = true, -- use `nowait` when creating keymaps
+      }
+
+      local opts = {
+        mode = "n", -- NORMAL mode
+        prefix = "",
+        buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = true, -- use `nowait` when creating keymaps
+      }
+
+      wk.register(leader_mapping, leader_opts)
+      wk.register(mapping, opts)
+    end,
+  }, -- See ':h diffview-config-hooks'
   keymaps = {
     disable_defaults = true, -- Disable the default keymaps
-    view = {
-      -- The `view` bindings are active in the diff buffers, only when the current
-      -- tabpage is a Diffview.
-      ["<tab>"]      = actions.select_next_entry, -- Open the diff for the next file
-      ["<s-tab>"]    = actions.select_prev_entry, -- Open the diff for the previous file
-      ["gf"]         = actions.goto_file, -- Open the file in a new split in the previous tabpage
-      ["<C-w><C-f>"] = actions.goto_file_split, -- Open the file in a new split
-      ["<C-w>gf"]    = actions.goto_file_tab, -- Open the file in a new tabpage
-      ["<leader>e"]  = actions.focus_files, -- Bring focus to the file panel
-      ["<leader>b"]  = actions.toggle_files, -- Toggle the file panel.
-      ["g<C-x>"]     = actions.cycle_layout, -- Cycle through available layouts.
-      ["[x"]         = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
-      ["]x"]         = actions.next_conflict, -- In the merge_tool: jump to the next conflict
-      ["<leader>co"] = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
-      ["<leader>ct"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
-      ["<leader>cb"] = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
-      ["<leader>ca"] = actions.conflict_choose("all"), -- Choose all the versions of a conflict
-      ["dx"]         = actions.conflict_choose("none"), -- Delete the conflict region
-    },
     diff1 = { --[[ Mappings in single window diff layouts ]] },
     diff2 = { --[[ Mappings in 2-way diff layouts ]] },
     diff3 = {
