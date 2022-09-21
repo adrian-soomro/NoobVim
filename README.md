@@ -107,7 +107,9 @@ To get up and running,
 3) and get the following:
 
 ## Binaries
-- [ripgrep](https://github.com/BurntSushi/ripgrep) for telescope
+- [neovim 0.8+](https://github.com/neovim/neovim/releases/nightly) - nvim itself
+- [packer](https://github.com/wbthomason/packer.nvim#quickstart) - a plugin manager
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation) for telescope
 - [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
 - [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
 - LSP servers (skip any that you're not interested in):
@@ -120,6 +122,22 @@ To get up and running,
   - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
   - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
 
+once done, source [init.lua](./init.lua) 
+
+while in NORMAL MODE, type 
+
+```
+:source ./init.lua
+```
+
+and update (install) all plugins, using the PackerSync command.
+
+while in NORMAL MODE, type
+
+```
+:PackerSync
+```
+
 # Using code runner
 You can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
 
@@ -127,8 +145,6 @@ You can run your project in a single keypress, similar to other popular IDEs. To
 
 ## ❓ Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 
-
-once done, source [init.lua](./init.lua) and perform a `:PackerSync` command 
 
 ### WSL2 Specific
 - With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
