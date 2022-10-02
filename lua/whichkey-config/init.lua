@@ -55,7 +55,7 @@ wk.setup({
     align = "left", -- align columns left, center or right
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<cr>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specify a list manually
@@ -95,17 +95,35 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local insertOpts = {
+  mode = "i", -- INSERT mode
+  prefix = "",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local visualOpts = {
+  mode = "v", -- VISUAL mode
+  prefix = "",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
 local leaderMapping = {
   h = {
     name = "Hunk stuff (Git)",
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<CR>", "Stage hunk" },
-    S = { "<cmd>lua require 'gitsigns'.stage_buffer()<CR>", "Stage buffer" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", "Reset hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<CR>", "Reset buffer" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>", "Undo stage hunk" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<CR>", "Preview hunk" },
-    d = { "<cmd>lua require 'gitsigns'.diffthis()<CR>", "View diff of this file" },
-    D = { "<cmd>DiffviewOpen<CR>", "Diff of the repo" },
+    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
+    S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage buffer" },
+    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset hunk" },
+    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset buffer" },
+    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo stage hunk" },
+    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview hunk" },
+    d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "View diff of this file" },
+    D = { "<cmd>DiffviewOpen<cr>", "Diff of the repo" },
   },
   g = {
     name = "Go to",
@@ -127,7 +145,7 @@ local leaderMapping = {
   f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format file" },
   o = {
     name = "Open",
-    o = { "<cmd>LSoutlineToggle<CR>", "Toggle lspsaga outline" },
+    o = { "<cmd>LSoutlineToggle<cr>", "Toggle lspsaga outline" },
   },
   ['<F5>'] = {
     "<cmd>lua require 'dap'.continue()<cr>", "Continue / Start debug session"
@@ -148,7 +166,7 @@ local mapping = {
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
     end, "Jump to previous hunk" },
-    d = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Jump to previous diagnostic" }
+    d = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump to previous diagnostic" }
   },
   ["]"] = {
     ["]"] = { function()
@@ -156,7 +174,7 @@ local mapping = {
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
     end, "Jump to next hunk" },
-    d = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Jump to next diagnostic" }
+    d = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump to next diagnostic" }
   },
   ['<F5>'] = {
     "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project"
@@ -179,7 +197,16 @@ local mapping = {
   ['<C-S-f>'] = { function()
     telescope_api.live_grep()
   end, "Search in current directory" },
+  ['<A-b>'] = { "<cmd>NvimTreeToggle<cr>", "Open nvim-tree (file explorer)" },
+  ['<C-h>'] = { "<C-w>h", "Switch to buffer left of current buffer" },
+  ['<C-k>'] = { "<C-w>k", "Switch to buffer above current buffer" },
+  ['<C-j>'] = { "<C-w>j", "Switch to buffer below current buffer" },
+  ['<C-l>'] = { "<C-w>l", "Switch to buffer right of current buffer" },
 }
+
+local insertMapping = {}
+
+local visualMapping = {}
 
 local visualLeaderMapping = {
   c = {
@@ -187,7 +214,34 @@ local visualLeaderMapping = {
   },
 }
 
-wk.register(leaderMapping, leaderOpts)
-wk.register(mapping, opts)
+local mappingForAllModes = {
+  ['<C-s>'] = { "<Cmd> :w<cr>", "Save buffer" },
+  ['<C-w>'] = { "<Cmd> :BufferClose<cr>", "Close buffer" },
+  ['<C-S-v>'] = { "<Cmd> :Telescope neoclip<cr>", "View clipboard history" },
+  ['<A-p>'] = { "<Cmd> :Glow %<cr>", "Preview markdown file" },
+}
 
+local merge = function(...)
+  local result = {}
+  for _, t in ipairs { ... } do
+    for k, v in pairs(t) do
+      result[k] = v
+    end
+    local mt = getmetatable(t)
+    if mt then
+      setmetatable(result, mt)
+    end
+  end
+  return result
+end
+
+-- normal mode
+wk.register(leaderMapping, leaderOpts)
+wk.register(merge(mapping, mappingForAllModes), opts)
+
+-- insert mode
+wk.register(merge(insertMapping, mappingForAllModes), insertOpts)
+
+-- visual mode
+wk.register(merge(visualMapping, mappingForAllModes), visualOpts)
 wk.register(visualLeaderMapping, visualLeaderOpts)
