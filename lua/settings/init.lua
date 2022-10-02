@@ -20,39 +20,6 @@ set.completeopt = menu,menuone,noselect
 set.updatetime = 2000
 set.timeoutlen = 300
 
-local opts = { noremap = true, silent = true }
-
-local keymap = vim.api.nvim_set_keymap
-
--- nvim-tree 
-keymap('n', '<A-b>', ':NvimTreeToggle <CR>', opts)
-
--- window navigation
-keymap('n', '<C-h>', '<C-w>h', opts)
-keymap('n', '<C-l>', '<C-w>l', opts)
-keymap('n', '<C-j>', '<C-w>j', opts)
-keymap('n', '<C-k>', '<C-w>k', opts)
-
--- can't teach an old dog new tricks section
-keymap('n', '<C-s>', [[<Cmd> :w <CR>]], opts)
-keymap('i', '<C-s>', [[<Cmd> :w <CR>]], opts)
-keymap('v', '<C-s>', [[<Cmd> :w <CR>]], opts)
-
--- close buffer
-keymap('n', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
-keymap('i', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
-keymap('v', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
-
--- clipboard with history
-keymap('n', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
-keymap('v', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
-keymap('i', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
-
--- markdown preview toggle
-keymap('n', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
-keymap('i', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
-keymap('v', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
-
 -- smart delete
 local function delete_special()
     local line_data = vim.api.nvim_win_get_cursor(0) -- returns {row, col}
