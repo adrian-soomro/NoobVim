@@ -1,4 +1,6 @@
 local wk = require('which-key')
+local telescope_api = require('telescope.builtin')
+
 wk.setup({
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -129,7 +131,7 @@ local leaderMapping = {
   },
   ['<F5>'] = {
     "<cmd>lua require 'dap'.continue()<cr>", "Continue / Start debug session"
-  }
+  },
 }
 
 local gs = require('gitsigns')
@@ -137,6 +139,9 @@ local gs = require('gitsigns')
 local mapping = {
   R = { "<cmd>Lspsaga rename<cr>", "Rename all occurences" },
   K = { "<cmd>Lspsaga hover_doc<cr>", "Toggle hover doc" },
+  ['<C-p>'] = { function()
+    telescope_api.find_files({ hidden = true })
+  end, "Find files" },
   ["["] = {
     ["["] = { function()
       if vim.wo.diff then return '[[' end
@@ -167,7 +172,13 @@ local mapping = {
   },
   ['<esc>'] = {
     "<cmd>tabclose<cr>", "Close current tab (window)"
-  }
+  },
+  ['<C-f>'] = { function()
+    telescope_api.current_buffer_fuzzy_find()
+  end, "Search in current buffer" },
+  ['<C-S-f>'] = { function()
+    telescope_api.live_grep()
+  end, "Search in current directory" },
 }
 
 local visualLeaderMapping = {

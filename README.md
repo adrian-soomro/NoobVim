@@ -106,37 +106,60 @@ To get up and running,
 2) rename it to `nvim` so that the contents of this repo are under `~/.config/nvim/` directory
 3) and get the following:
 
-## Binaries
-- [neovim 0.8+](https://github.com/neovim/neovim/releases/nightly) - nvim itself
-- [packer](https://github.com/wbthomason/packer.nvim#quickstart) - a plugin manager
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation) for telescope
-- [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
-- [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
-- LSP servers (skip any that you're not interested in):
-  - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
-     - [shellcheck](https://github.com/koalaman/shellcheck#installing)
-  - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
-  - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
-  - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
-  - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
-  - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
-  - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
+    ## Binaries
+    - [neovim 0.8+](https://github.com/neovim/neovim/releases/nightly) - nvim itself
+    - [packer](https://github.com/wbthomason/packer.nvim#quickstart) - a plugin manager
+    - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) for telescope
+    - [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
+    - [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
+    - LSP servers (skip any that you're not interested in):
+      - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
+         - [shellcheck](https://github.com/koalaman/shellcheck#installing)
+      - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
+      - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
+      - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
+      - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
+      - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
+      - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
 
-once done, source [init.lua](./init.lua) 
+    once done, source [init.lua](./init.lua) 
 
-while in NORMAL MODE, type 
+    while in NORMAL MODE, type 
 
+    ```
+    :source ./init.lua
+    ```
+
+    and update (install) all plugins, using the PackerSync command.
+
+    while in NORMAL MODE, type
+
+    ```
+    :PackerSync
+    ```
+
+4) make sure your terminal emulator sends the right signals to the terminal
+
+Certain keybindings rely on pressing CTRL + SHIFT + key E.g. CTRL+SHIFT+f opens a ui for searching text in the directory you're in, or CTRL+SHIFT+v opens the clipboard history. However, by default this is not supported in vim/neovim. To make it work, we'll need to tell our terminal emulator to intercept this combination of key presses and send input that can be understood by neovim to the terminal. The way to do it and what input you should send varies based on your terminal emulator.
+
+## Window's Terminal:
+
+add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG)
+```JSON
+        {
+            "command": {
+                "action": "sendInput",
+                "input": "\u001b[70;5u"
+            },
+            "keys": "ctrl+shift+f"
+        }
 ```
-:source ./init.lua
-```
+Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the input would be `\u001b[86;5u`. To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 
-and update (install) all plugins, using the PackerSync command.
+More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
-while in NORMAL MODE, type
-
-```
-:PackerSync
-```
+## Alacritty / Kitty
+Configure the terminal according to [this guide](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
 # Using code runner
 You can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.

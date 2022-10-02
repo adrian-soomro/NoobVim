@@ -22,14 +22,7 @@ set.timeoutlen = 300
 
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 local keymap = vim.api.nvim_set_keymap
-
--- telescope
-keymap('n', '<C-p>', [[<Cmd> lua require('telescope.builtin').find_files({ hidden = true })<CR>]], opts)
-keymap('n', '<C-f>', [[<Cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], opts)
-keymap('n', '<C-F>', [[<Cmd> lua require('telescope.builtin').live_grep()<CR>]], opts)
 
 -- nvim-tree 
 keymap('n', '<A-b>', ':NvimTreeToggle <CR>', opts)
@@ -51,9 +44,9 @@ keymap('i', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
 keymap('v', '<C-w>', [[<Cmd> :BufferClose <CR>]], opts)
 
 -- clipboard with history
-keymap('n', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
-keymap('v', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
-keymap('i', '<C-V>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+keymap('n', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+keymap('v', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
+keymap('i', '<C-S-v>', [[<Cmd> :Telescope neoclip <CR>]], opts)
 
 -- markdown preview toggle
 keymap('n', '<A-p>', [[<Cmd> :Glow % <CR>]], opts)
