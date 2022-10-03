@@ -1,5 +1,7 @@
 local wk = require('which-key')
 local telescope_api = require('telescope.builtin')
+local gs = require('gitsigns')
+local utils = require('lua-utils')
 
 wk.setup({
   plugins = {
@@ -68,52 +70,7 @@ wk.setup({
   },
 })
 
-local leaderOpts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local visualLeaderOpts = {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local insertOpts = {
-  mode = "i", -- INSERT mode
-  prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local visualOpts = {
-  mode = "v", -- VISUAL mode
-  prefix = "",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local leaderMapping = {
+local leader_mapping = {
   h = {
     name = "Hunk stuff (Git)",
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
@@ -132,6 +89,7 @@ local leaderMapping = {
     s = { "<cmd>Lspsaga signature_help<cr>", "Check out the signature" },
   },
   c = {
+    name = "Code",
     a = { "<cmd>Lspsaga code_action<cr>", "Open code actions" }
   },
   s = {
@@ -152,96 +110,81 @@ local leaderMapping = {
   },
 }
 
-local gs = require('gitsigns')
-
 local mapping = {
   R = { "<cmd>Lspsaga rename<cr>", "Rename all occurences" },
   K = { "<cmd>Lspsaga hover_doc<cr>", "Toggle hover doc" },
-  ['<C-p>'] = { function()
-    telescope_api.find_files({ hidden = true })
-  end, "Find files" },
   ["["] = {
-    ["["] = { function()
-      if vim.wo.diff then return '[[' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, "Jump to previous hunk" },
+    ["["] = { 
+      function()
+        if vim.wo.diff then return '[[' end
+        vim.schedule(function() gs.prev_hunk() end)
+        return '<Ignore>'
+      end, "Jump to previous hunk" 
+    },
     d = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump to previous diagnostic" }
   },
   ["]"] = {
-    ["]"] = { function()
-      if vim.wo.diff then return ']]' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, "Jump to next hunk" },
+    ["]"] = {
+      function()
+        if vim.wo.diff then return ']]' end
+        vim.schedule(function() gs.next_hunk() end)
+        return '<Ignore>'
+      end, "Jump to next hunk" 
+    },
     d = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump to next diagnostic" }
   },
-  ['<F5>'] = {
-    "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project"
+  ['<F5>'] = { "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project" },
+  ['<F8>'] = { "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)" },
+  ['<F9>'] = { "<cmd>lua require 'dap'.step_into()<cr>", "Step into (debug)" },
+  ['<F10>'] = { "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)" },
+  ['<esc>'] = { "<cmd>tabclose<cr>", "Close current tab (window)" },
+  ['<C-p>'] = {
+    function()
+      telescope_api.find_files({ hidden = true })
+    end, "Find files"
   },
-  ['<F8>'] = {
-    "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)"
+  ['<C-f>'] = {
+    function()
+      telescope_api.current_buffer_fuzzy_find()
+    end, "Search in current buffer"
   },
-  ['<F9>'] = {
-    "<cmd>lua require 'dap'.step_into()<cr>", "Step into (debug)"
+  ['<C-S-f>'] = {
+    function()
+      telescope_api.live_grep()
+    end, "Search in current directory"
   },
-  ['<F10>'] = {
-    "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)"
-  },
-  ['<esc>'] = {
-    "<cmd>tabclose<cr>", "Close current tab (window)"
-  },
-  ['<C-f>'] = { function()
-    telescope_api.current_buffer_fuzzy_find()
-  end, "Search in current buffer" },
-  ['<C-S-f>'] = { function()
-    telescope_api.live_grep()
-  end, "Search in current directory" },
-  ['<A-b>'] = { "<cmd>NvimTreeToggle<cr>", "Open nvim-tree (file explorer)" },
   ['<C-h>'] = { "<C-w>h", "Switch to buffer left of current buffer" },
   ['<C-k>'] = { "<C-w>k", "Switch to buffer above current buffer" },
   ['<C-j>'] = { "<C-w>j", "Switch to buffer below current buffer" },
   ['<C-l>'] = { "<C-w>l", "Switch to buffer right of current buffer" },
+  ['<A-b>'] = { "<cmd>NvimTreeToggle<cr>", "Open nvim-tree (file explorer)" },
 }
 
-local insertMapping = {}
+local insert_mapping = {}
 
-local visualMapping = {}
-
-local visualLeaderMapping = {
+local visual_leader_mapping = {
   c = {
+    name = "Code",
     a = { "<esc><cmd>Lspsaga range_code_action<cr>", "Open code actions" }
   },
 }
 
-local mappingForAllModes = {
+local visual_mapping = {}
+
+local mapping_for_all_modes = {
   ['<C-s>'] = { "<Cmd> :w<cr>", "Save buffer" },
   ['<C-w>'] = { "<Cmd> :BufferClose<cr>", "Close buffer" },
   ['<C-S-v>'] = { "<Cmd> :Telescope neoclip<cr>", "View clipboard history" },
   ['<A-p>'] = { "<Cmd> :Glow %<cr>", "Preview markdown file" },
 }
 
-local merge = function(...)
-  local result = {}
-  for _, t in ipairs { ... } do
-    for k, v in pairs(t) do
-      result[k] = v
-    end
-    local mt = getmetatable(t)
-    if mt then
-      setmetatable(result, mt)
-    end
-  end
-  return result
-end
-
 -- normal mode
-wk.register(leaderMapping, leaderOpts)
-wk.register(merge(mapping, mappingForAllModes), opts)
+wk.register(leader_mapping, { prefix = "<leader>" })
+wk.register(utils.merge(mapping, mapping_for_all_modes))
 
 -- insert mode
-wk.register(merge(insertMapping, mappingForAllModes), insertOpts)
+wk.register(utils.merge(insert_mapping, mapping_for_all_modes), { mode = "i" })
 
 -- visual mode
-wk.register(merge(visualMapping, mappingForAllModes), visualOpts)
-wk.register(visualLeaderMapping, visualLeaderOpts)
+wk.register(utils.merge(visual_mapping, mapping_for_all_modes), { mode = "v" })
+wk.register(visual_leader_mapping, { mode = "v", prefix = "<leader>" })
