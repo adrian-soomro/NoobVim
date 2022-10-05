@@ -92,7 +92,8 @@ return require 'packer'.startup(function()
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('code_runner').setup({
-        mode = 'float',
+        mode = 'term',
+        focus = false,
         -- put here the commands by filetype
         filetype = {
           java = "cd $dir && javac $fileName && java $fileNameWithoutExt",

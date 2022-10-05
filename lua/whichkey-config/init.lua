@@ -157,7 +157,20 @@ local mapping = {
   ['<C-k>'] = { "<C-w>k", "Switch to buffer above current buffer" },
   ['<C-j>'] = { "<C-w>j", "Switch to buffer below current buffer" },
   ['<C-l>'] = { "<C-w>l", "Switch to buffer right of current buffer" },
+  ['<C-,>'] = { "<cmd>BufferPrevious<cr>", "Previous buffer" },
+  ['<C-.>'] = { "<cmd>BufferNext<cr>", "Next buffer" },
+  ['<C-S-w>'] = { "<cmd>BufferCloseAllButCurrent<cr>", "Close other buffers" },
   ['<A-b>'] = { "<cmd>NvimTreeToggle<cr>", "Open nvim-tree (file explorer)" },
+  ['<A-1>'] = { "<cmd>BufferGoto 1<cr>", "Go 'tab' number 1" },
+  ['<A-2>'] = { "<cmd>BufferGoto 2<cr>", "Go 'tab' number 2" },
+  ['<A-3>'] = { "<cmd>BufferGoto 3<cr>", "Go 'tab' number 3" },
+  ['<A-4>'] = { "<cmd>BufferGoto 4<cr>", "Go 'tab' number 4" },
+  ['<A-5>'] = { "<cmd>BufferGoto 5<cr>", "Go 'tab' number 5" },
+  ['<A-6>'] = { "<cmd>BufferGoto 6<cr>", "Go 'tab' number 6" },
+  ['<A-7>'] = { "<cmd>BufferGoto 7<cr>", "Go 'tab' number 7" },
+  ['<A-8>'] = { "<cmd>BufferGoto 8<cr>", "Go 'tab' number 8" },
+  ['<A-9>'] = { "<cmd>BufferGoto 9<cr>", "Go 'tab' number 9" },
+  ['<A-0>'] = { "<cmd>BufferGoto 0<cr>", "Go 'tab' number 0" },
 }
 
 local insert_mapping = {}
