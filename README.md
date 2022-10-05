@@ -140,7 +140,17 @@ To get up and running,
 
 4) make sure your terminal emulator sends the right signals to the terminal
 
-Certain keybindings rely on pressing CTRL + SHIFT + key E.g. CTRL+SHIFT+f opens a ui for searching text in the directory you're in, or CTRL+SHIFT+v opens the clipboard history. However, by default this is not supported in vim/neovim. To make it work, we'll need to tell our terminal emulator to intercept this combination of key presses and send input that can be understood by neovim to the terminal. The way to do it and what input you should send varies based on your terminal emulator.
+Certain keybindings rely on pressing CTRL + SHIFT + key E.g. CTRL+SHIFT+f. Unfortunately, by default this is not supported in vim/neovim. To make it work, we'll need to tell our terminal emulator to intercept this combination of key presses and send input that can be understood by neovim to the terminal. The way to do it and what input you should send varies based on your terminal emulator.
+
+NoobVim uses these extra bindings, please make sure they work.
+
+| Key Combination |
+|-----------------|
+| Ctrl-Shift-f    |
+| Ctrl-Shift-v    |
+| Ctrl-Shift-w    |
+| Ctrl-.          |
+| Ctrl-,          |
 
 ## Window's Terminal:
 
