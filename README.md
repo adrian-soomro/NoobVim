@@ -112,6 +112,7 @@ To get up and running,
     - [ripgrep](https://github.com/BurntSushi/ripgrep#installation) for telescope
     - [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
     - [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
+    - [git version 2.31.0+]()
     - LSP servers (skip any that you're not interested in):
       - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
          - [shellcheck](https://github.com/koalaman/shellcheck#installing)
@@ -122,15 +123,8 @@ To get up and running,
       - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
       - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
 
-    once done, source [init.lua](./init.lua) 
-
-    while in NORMAL MODE, type 
-
-    ```
-    :source ./init.lua
-    ```
-
-    and update (install) all plugins, using the PackerSync command.
+    **NB** you'll also need [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/install/) and [gcc](https://gcc.gnu.org/install/) 
+    once done, update (install) all plugins, using the PackerSync command.
 
     while in NORMAL MODE, type
 
