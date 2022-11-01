@@ -123,6 +123,7 @@ To get up and running,
       - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
       - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
       - [omnisharp](https://github.com/omnisharp/omnisharp-roslyn#downloading-omnisharp) for C#
+      - [pylsp](https://github.com/python-lsp/python-lsp-server#installation) for python
 
     **NB** you'll also need [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/install/) and [gcc](https://gcc.gnu.org/install/) 
     once done, update (install) all plugins, using the PackerSync command.

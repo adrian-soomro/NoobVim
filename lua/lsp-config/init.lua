@@ -114,3 +114,16 @@ require('lspconfig').omnisharp.setup {
   -- true
   analyze_open_documents_only = false,
 }
+
+require('lspconfig').pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
