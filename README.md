@@ -122,6 +122,7 @@ To get up and running,
       - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
       - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
       - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
+      - [omnisharp](https://github.com/omnisharp/omnisharp-roslyn#downloading-omnisharp) for C#
 
     **NB** you'll also need [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/install/) and [gcc](https://gcc.gnu.org/install/) 
     once done, update (install) all plugins, using the PackerSync command.
