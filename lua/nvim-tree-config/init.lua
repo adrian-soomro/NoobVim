@@ -28,7 +28,7 @@ local setup_key_mapping = function(bufnr)
     Ya = { nt_api.fs.copy.absolute, "Yank a file's absolute path" },
     p = { nt_api.fs.paste, "Paste" },
     q = { nt_api.tree.close, "Close File Tree" },
-    v = { "vsplit", "Open file in vertical split" },
+    v = { nt_api.node.open.vertical, "Open file in vertical split" },
   }
 
   local leader_opts = {
