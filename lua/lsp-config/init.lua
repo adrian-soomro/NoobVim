@@ -77,7 +77,7 @@ require('lspconfig').jsonls.setup {
 require('lspconfig').omnisharp.setup {
   flags = lsp_flags,
   capabilities = capabilities,
-  cmd = { "dotnet", "/path/to/omnisharp/OmniSharp.dll" },
+  cmd = { "dotnet", "/usr/lib/omnisharp/OmniSharp.dll" },
 
   -- Enables support for reading code style, naming convention and analyzer
   -- settings from .editorconfig.

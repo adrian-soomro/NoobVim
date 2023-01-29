@@ -14,7 +14,6 @@ return require 'packer'.startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'lewis6991/gitsigns.nvim'
   use 'windwp/nvim-autopairs'
-  use 'glepnir/dashboard-nvim'
   use 'folke/which-key.nvim'
   use 'mfussenegger/nvim-dap'
   use 'nvim-telescope/telescope-dap.nvim'
@@ -44,12 +43,12 @@ return require 'packer'.startup(function()
     run = ':TSUpdate'
   }
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    'nvim-tree/nvim-tree.lua',
+    requires = { 'nvim-tree/nvim-web-devicons' }
   }
   use {
     'romgrk/barbar.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    requires = { 'nvim-tree/nvim-web-devicons' }
   }
   use {
     'akinsho/toggleterm.nvim', tag = 'v2.*'
@@ -62,7 +61,7 @@ return require 'packer'.startup(function()
   }
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('lualine').setup({
         options = { theme = 'dracula' }
@@ -72,6 +71,7 @@ return require 'packer'.startup(function()
   use {
     'glepnir/lspsaga.nvim',
     branch = "main",
+    requires = { {"nvim-tree/nvim-web-devicons"} }
   }
   use {
     'folke/persistence.nvim',
