@@ -19,6 +19,14 @@ return require 'packer'.startup(function()
   use 'nvim-telescope/telescope-dap.nvim'
   use 'cljoly/telescope-repo.nvim'
   use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard-config')
+    end,
+    requires = {'nvim-tree/nvim-web-devicons'}
+  }
+  use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim'
   }
