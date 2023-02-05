@@ -77,8 +77,10 @@ require('dashboard').setup({
               icon_hl = 'Title',
               desc = 'Find a word anywhere',
               desc_hl = 'String',
+              key = 'w',
+              key_hl = 'Number',
               keymap = 'Ctrl + Shift + f',
-              action = 'PackerSync'
+              action = 'Telescope live_grep'
             },
             {
               icon = '   ',
