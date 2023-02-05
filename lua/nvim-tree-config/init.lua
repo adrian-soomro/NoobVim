@@ -53,9 +53,41 @@ local setup_key_mapping = function(bufnr)
   wk.register(mapping, opts)
 end
 
+local function open_nvim_tree(data)
+  local ignored_file_types = {
+    "dashboard",
+    "DiffviewFiles"
+  }
+    -- buffer is a real file on the disk
+  local real_file = vim.fn.filereadable(data.file) == 1
+
+  -- buffer is a [No Name]
+  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+  local file_type = vim.bo[data.buf].ft
+
+  if vim.api.nvim_get_var('noobvim').tree.was_shown then
+    return
+  end
+
+  if not real_file and no_name then
+    return
+  end
+
+  if vim.tbl_contains(ignored_file_types, file_type) then
+    return
+  end
+
+  require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
+
+  vim.api.nvim_set_var('noobvim', {
+    tree = {
+      was_shown = true
+    }
+  })
+end
+
 require("nvim-tree").setup({
-  open_on_setup = true,
-  ignore_ft_on_setup = { 'dashboard' },
   disable_netrw = true,
   hijack_netrw = true,
   on_attach = setup_key_mapping,
@@ -108,3 +140,6 @@ require("nvim-tree").setup({
 require('nvim-web-devicons').setup {
   default = true
 }
+
+vim.api.nvim_create_autocmd({ "BufAdd" }, { callback = open_nvim_tree })
+

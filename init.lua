@@ -15,3 +15,9 @@ require('whichkey-config')
 require('dap-config')
 require('diffview-config')
 require('settings')
+
+vim.api.nvim_set_var('noobvim', { 
+  tree = {
+    was_shown = false
+  }
+})
