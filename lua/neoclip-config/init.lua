@@ -2,11 +2,10 @@ require('neoclip').setup({
   keys = {
     telescope = {
       i = {
-        select = { 'o', '<cr>' }
+        paste = { 'o', 'p', '<cr>' }
       },
       n = {
-        select = { 'o', '<cr>' },
-        paste = { 'o', '<cr>' }
+        paste = { 'o', 'p', '<cr>' }
       }
     }
   }
