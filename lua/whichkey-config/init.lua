@@ -84,9 +84,9 @@ local leader_mapping = {
   },
   g = {
     name = "Go to",
-    d = { "<cmd>Lspsaga preview_definition<cr>", "Preview definition" },
+    d = { "<cmd>Lspsaga peek_definition<cr>", "Peek definition" },
     i = { "<cmd>Lspsaga lsp_finder<cr>", "Check out the implementations" },
-    s = { "<cmd>Lspsaga signature_help<cr>", "Check out the signature" },
+    s = { "<cmd>Lspsaga hover_doc<cr>", "Check out the signature" },
   },
   c = {
     name = "Code",
@@ -103,7 +103,7 @@ local leader_mapping = {
   f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format file" },
   o = {
     name = "Open",
-    o = { "<cmd>LSoutlineToggle<cr>", "Toggle lspsaga outline" },
+    o = { "<cmd>Lspsaga outline<cr>", "Toggle lspsaga outline" },
   },
   ['<F5>'] = {
     "<cmd>lua require 'dap'.continue()<cr>", "Continue / Start debug session"
@@ -112,16 +112,17 @@ local leader_mapping = {
 
 local mapping = {
   R = { "<cmd>Lspsaga rename<cr>", "Rename all occurences" },
-  K = { "<cmd>Lspsaga hover_doc<cr>", "Toggle hover doc" },
   ["["] = {
-    ["["] = { 
+    ["["] = {
       function()
         if vim.wo.diff then return '[[' end
         vim.schedule(function() gs.prev_hunk() end)
         return '<Ignore>'
-      end, "Jump to previous hunk" 
+      end, "Jump to previous hunk"
     },
-    d = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump to previous diagnostic" }
+    d = { function ()
+      require("lspsaga.diagnostic"):goto_prev()
+    end, "Jump to previous diagnostic" }
   },
   ["]"] = {
     ["]"] = {
@@ -129,9 +130,11 @@ local mapping = {
         if vim.wo.diff then return ']]' end
         vim.schedule(function() gs.next_hunk() end)
         return '<Ignore>'
-      end, "Jump to next hunk" 
+      end, "Jump to next hunk"
     },
-    d = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump to next diagnostic" }
+    d = { function ()
+      require("lspsaga.diagnostic"):goto_next()
+    end, "Jump to next diagnostic" }
   },
   ['<F5>'] = { "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project" },
   ['<F8>'] = { "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)" },

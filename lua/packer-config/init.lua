@@ -79,7 +79,10 @@ return require 'packer'.startup(function()
   use {
     'glepnir/lspsaga.nvim',
     branch = "main",
-    requires = { {"nvim-tree/nvim-web-devicons"} }
+    requires = {
+      "nvim-tree/nvim-web-devicons",
+      "nvim-lspconfig"
+    }
   }
   use {
     'folke/persistence.nvim',
