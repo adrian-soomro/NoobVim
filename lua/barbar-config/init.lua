@@ -4,12 +4,15 @@ require('bufferline').setup({
   tabpages = true,
   closable = true,
   clickable = true,
-  icons = 'both',
-  icon_separator_active = '▎',
-  icon_separator_inactive = '▎',
-  icon_close_tab = '',
-  icon_close_tab_modified = '●',
-  icon_pinned = '車',
+  icons = {
+    buffer_index = true,
+    filetype = { enabled = true },
+    sepatarator = { left = '▎' },
+    inactive = { sepatarator = { left = '▎' } },
+    button = '',
+    pinned = { button = '車' },
+    modified = { button = '●' }
+  },
   insert_at_end = true,
 })
 

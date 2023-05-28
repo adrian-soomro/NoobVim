@@ -66,7 +66,7 @@ local function open_nvim_tree(data)
 
   local file_type = vim.bo[data.buf].ft
 
-  if vim.api.nvim_get_var('noobvim').tree.was_shown then
+  if vim.g.noobvim_tree_was_shown then
     return
   end
 
@@ -80,11 +80,7 @@ local function open_nvim_tree(data)
 
   require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
 
-  vim.api.nvim_set_var('noobvim', {
-    tree = {
-      was_shown = true
-    }
-  })
+  vim.g.noobvim_tree_was_shown = true
 end
 
 require("nvim-tree").setup({

@@ -1,7 +1,6 @@
 return require 'packer'.startup(function()
   use 'wbthomason/packer.nvim'
   use 'EdenEast/nightfox.nvim'
-  use 'neovim/nvim-lspconfig'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-treesitter/playground'
@@ -18,6 +17,12 @@ return require 'packer'.startup(function()
   use 'mfussenegger/nvim-dap'
   use 'nvim-telescope/telescope-dap.nvim'
   use 'cljoly/telescope-repo.nvim'
+  use { 
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup({})
+    end
+  }
   use {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
@@ -130,4 +135,5 @@ return require 'packer'.startup(function()
       require('nvim-dap-virtual-text').setup({})
     end
   }
+  use 'neovim/nvim-lspconfig'
 end)

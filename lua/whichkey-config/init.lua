@@ -100,7 +100,7 @@ local leader_mapping = {
     name = "Insert",
     b = { "<cmd>lua require 'dap'.toggle_breakpoint()<cr>", "Insert breakpoint" },
   },
-  f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format file" },
+  f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format file" },
   o = {
     name = "Open",
     o = { "<cmd>Lspsaga outline<cr>", "Toggle lspsaga outline" },
