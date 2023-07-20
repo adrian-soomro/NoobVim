@@ -1,4 +1,11 @@
-return require 'packer'.startup(function()
+local packer = require('packer')
+
+packer.init({
+  snapshot = "packer.lock",
+  snapshot_path = vim.fn.stdpath('config')
+})
+
+return packer.startup({function()
   use 'wbthomason/packer.nvim'
   use 'EdenEast/nightfox.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -136,4 +143,4 @@ return require 'packer'.startup(function()
     end
   }
   use 'neovim/nvim-lspconfig'
-end)
+end, config = { snapshot='packer.lock' } })
