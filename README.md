@@ -102,6 +102,14 @@ NoobVim uses [which-key plugin](https://github.com/folke/which-key.nvim) to keep
 
 # 🚀 Getting started
 To get up and running, 
+
+if you're on Ubuntu, you can run the install script (you'll need su privileges)
+
+```bash 
+if [[ "$(md5sum ./scripts/install.sh)" =~ "25e4124d24064e6d57cb658509958b09" ]]; then sudo ./scripts/install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+```
+
+if not, you'll need to do the following
 1) clone this repo to your `~/.config/` directory,
 2) rename it to `nvim` so that the contents of this repo are under `~/.config/nvim/` directory
 3) and get the following:
