@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function installEssentials() {
-  sudo apt-get install build-essential procps curl file git cmake -y
+  sudo apt-get install build-essential procps curl file git cmake unzip -y
 }
 
 function installBrew() {
