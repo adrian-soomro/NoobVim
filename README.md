@@ -121,17 +121,6 @@ if not, you'll need to do the following
     - [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
     - [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
     - [git version 2.31.0+]()
-    - LSP servers (skip any that you're not interested in):
-      - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
-         - [shellcheck](https://github.com/koalaman/shellcheck#installing)
-      - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
-      - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
-      - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
-      - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
-      - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
-      - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
-      - [omnisharp](https://github.com/omnisharp/omnisharp-roslyn#downloading-omnisharp) for C#
-      - [pylsp](https://github.com/python-lsp/python-lsp-server#installation) for python
 
     **NB** you'll also need [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/install/) and [gcc](https://gcc.gnu.org/install/) 
     once done, update (install) all plugins, using the PackerSync command.
