@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function installEssentials() {
-  sudo apt-get install build-essential procps curl file git cmake unzip -y
+  sudo apt-get install build-essential procps curl file git cmake unzip python3-pip python3-venv -y
 }
 
 function installBrew() {
@@ -16,7 +16,7 @@ function installPacker() {
 }
 
 function installOtherBinaries() {
-  brew install ripgrep glow fd
+  brew install ripgrep glow fd java dotnet@7 dotnet@6 go
 }
 
 function installNvim() {
