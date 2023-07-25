@@ -15,8 +15,24 @@ function installPacker() {
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
+function installNode() {
+  brew install nvm
+  if [ ! -d "$HOME/.nvm"]; then
+    mkdir "$HOME/.nvm"
+  fi
+  (echo; echo 'export NVM_DIR="$HOME/.nvm"') >> ~/.profile
+  (echo; echo '[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm') >> ~/.profile
+  (echo; echo '[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion') >> ~/.profile
+  
+  source ~/.profile
+  nvm install 18 
+  npm i -g yarn
+}
+
 function installOtherBinaries() {
   brew install ripgrep glow fd java dotnet@7 dotnet@6 go
+  
+  installNode
 }
 
 function installNvim() {
