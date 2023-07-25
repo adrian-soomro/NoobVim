@@ -141,9 +141,10 @@ return packer.startup({
     }
     use {
       'williamboman/mason-lspconfig.nvim',
+      requires = { "williamboman/mason.nvim" },
       config = function()
         require('mason-lspconfig').setup({
-          ensure_installed = { "bashls", "omnisharp", "css", "cucumber_language_server", "dockerls",
+          ensure_installed = { "bashls", "omnisharp", "cssls", "cucumber_language_server", "dockerls",
             "docker_compose_language_service", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls", "tsserver",
             "lua_ls", "marksman", "powershell_es", "pylsp", "rust_analyzer", "sqls", "svelte", "taplo", "terraformls", "tflint",
             "vuels", "lemminx", "yamlls" },
