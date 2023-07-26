@@ -2,7 +2,10 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+--Enable (broadcasting) snippet capability for completion
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require 'lspconfig'.lua_ls.setup {
   flags = lsp_flags,
@@ -58,3 +61,16 @@ require('lspconfig').pylsp.setup {
     }
   }
 }
+
+require('lspconfig').html.setup {
+  capabilities = capabilities,
+}
+
+require('lspconfig').cssls.setup {
+  capabilities = capabilities,
+}
+
+require('lspconfig').svelte.setup {
+  capabilities = capabilities,
+}
+
