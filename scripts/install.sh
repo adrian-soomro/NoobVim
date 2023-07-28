@@ -1,5 +1,7 @@
 #!/bin/bash
 
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+
 function installEssentials() {
   sudo apt-get update
   sudo apt-get install build-essential procps curl file git cmake unzip python3-pip python3-venv -y
@@ -7,8 +9,9 @@ function installEssentials() {
 
 function installBrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.profile
+  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> "$USER_HOME/.profile"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  source "$USER_HOME/.profile"
 }
 
 function installPacker() {
@@ -18,14 +21,14 @@ function installPacker() {
 
 function installNode() {
   brew install nvm
-  if [ ! -d "$HOME/.nvm" ]; then
-    mkdir "$HOME/.nvm"
+  if [ ! -d "$USER_HOME/.nvm" ]; then
+    mkdir "$USER_HOME/.nvm"
   fi
-  (echo; echo 'export NVM_DIR="$HOME/.nvm"') >> ~/.profile
+  (echo; echo 'export NVM_DIR="$HOME/.nvm"') >> "$USER_HOME/.profile"
   (echo; echo '[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm') >> ~/.profile
-  (echo; echo '[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion') >> ~/.profile
+  (echo; echo '[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion') >> "$USER_HOME/.profile"
   
-  source "$HOME/.profile"
+  source "$USER_HOME/.profile"
   nvm install 18 
   npm i -g yarn
 }
@@ -50,7 +53,7 @@ function installNvim() {
 
 function installNoobVim() {
   git clone https://github.com/adrian-soomro/NoobVim.git
-  pathToConfigDirectory="$HOME/.config"
+  pathToConfigDirectory="$USER_HOME/.config"
   if [ ! -d "$pathToConfigDirectory" ]; then
     mkdir -p "$pathToConfigDirectory"
   fi 
