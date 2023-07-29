@@ -107,7 +107,7 @@ if you're on Ubuntu, you can run the install script (you'll need su privileges)
 
 ```bash 
 curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
-if [[ "$(md5sum ./install.sh)" =~ "3dd9bd6e3e8706b4fe5d1d8eea89115d" ]]; then sudo bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+if [[ "$(md5sum ./install.sh)" =~ "c37b8612bee3e2a5a31ffd803ca75681" ]]; then sudo bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
 ```
 
 if not, you'll need to do the following
