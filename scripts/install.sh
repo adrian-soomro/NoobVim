@@ -2,7 +2,7 @@
 
 function installEssentials() {
   sudo apt-get update
-  sudo apt-get install build-essential procps curl file git cmake unzip python3-pip python3-venv -y
+  sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv -y
 }
 
 function installBrew() {
@@ -38,7 +38,7 @@ function installOtherBinaries() {
 }
 
 function installNvim() {
-  startingDirectory="$(PWD)"
+  startingDirectory="$PWD"
   mkdir -p ~/tmp
   cd ~/tmp
   wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz
