@@ -60,7 +60,6 @@ function installNoobVim() {
 
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerInstall' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
-  nvim --headless -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
 }
 
 installEssentials
