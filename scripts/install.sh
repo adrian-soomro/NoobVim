@@ -63,7 +63,7 @@ function installNoobVim() {
 
 installEssentials
 installBrew
-# installPacker
+installPacker
 installOtherBinaries
 installNvim
 installNoobVim
