@@ -140,7 +140,7 @@ if not, you'll need to do the following
     :PackerSync
     ```
 
-4) make sure your terminal emulator sends the right signals to the terminal
+## Make sure your terminal emulator sends the right signals to the terminal
 
 Certain keybindings rely on pressing CTRL + SHIFT + key E.g. CTRL+SHIFT+f. Unfortunately, by default this is not supported in vim/neovim. To make it work, we'll need to tell our terminal emulator to intercept this combination of key presses and send input that can be understood by neovim to the terminal. The way to do it and what input you should send varies based on your terminal emulator.
 
@@ -154,7 +154,7 @@ NoobVim uses these extra bindings, please make sure they work.
 | Ctrl-.          |
 | Ctrl-,          |
 
-## Window's Terminal:
+### Window's Terminal:
 
 add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG)
 ```JSON
@@ -170,7 +170,7 @@ Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the
 
 More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
-## Alacritty / Kitty
+### Alacritty / Kitty
 Configure the terminal according to [this guide](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
 # Using code runner
