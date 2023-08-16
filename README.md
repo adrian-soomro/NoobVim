@@ -106,7 +106,7 @@ To get up and running,
 if you're on Ubuntu, you can run the install script (you'll need su privileges)
 
 ```bash 
-curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/feature/main/scripts/install.sh --output install.sh && \
+curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
 if [[ "$(md5sum ./install.sh)" =~ "cae50d24390073c3114f2b1110197e9b" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
 ```
 
