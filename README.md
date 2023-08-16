@@ -102,6 +102,23 @@ NoobVim uses [which-key plugin](https://github.com/folke/which-key.nvim) to keep
 
 # 🚀 Getting started
 To get up and running, 
+
+if you're on Ubuntu, you can run the install script (you'll need su privileges)
+
+```bash 
+curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/feature/main/scripts/install.sh --output install.sh && \
+if [[ "$(md5sum ./install.sh)" =~ "cae50d24390073c3114f2b1110197e9b" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+```
+
+if you're on Debian, you can run this script (you'll need su privileges)
+
+```bash 
+sudo apt-get install curl -y && \
+curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
+if [[ "$(md5sum ./install.sh)" =~ "cae50d24390073c3114f2b1110197e9b" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+```
+
+if not, you'll need to do the following
 1) clone this repo to your `~/.config/` directory,
 2) rename it to `nvim` so that the contents of this repo are under `~/.config/nvim/` directory
 3) and get the following:
@@ -113,17 +130,6 @@ To get up and running,
     - [glow](https://github.com/charmbracelet/glow#installation) for glow plugin
     - [fd](https://github.com/sharkdp/fd#installation) for telescope-repos
     - [git version 2.31.0+]()
-    - LSP servers (skip any that you're not interested in):
-      - [bash language server](https://github.com/bash-lsp/bash-language-server#installation)
-         - [shellcheck](https://github.com/koalaman/shellcheck#installing)
-      - [lua-language-server](https://github.com/sumneko/lua-language-server), good docs [here](https://www.chrisatmachine.com/blog/category/neovim/28-neovim-lua-development)
-      - [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server#installing) for both JS and TS
-      - [marksman](https://github.com/artempyanykh/marksman#how-to-install) for markdown
-      - [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs#installation-instructions) for Dockerfile
-      - [terraform-ls](https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md#installation) for terraform
-      - [vscode-json-language-server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls) for JSON
-      - [omnisharp](https://github.com/omnisharp/omnisharp-roslyn#downloading-omnisharp) for C#
-      - [pylsp](https://github.com/python-lsp/python-lsp-server#installation) for python
 
     **NB** you'll also need [make](https://www.gnu.org/software/make/), [cmake](https://cmake.org/install/) and [gcc](https://gcc.gnu.org/install/) 
     once done, update (install) all plugins, using the PackerSync command.
@@ -134,7 +140,7 @@ To get up and running,
     :PackerSync
     ```
 
-4) make sure your terminal emulator sends the right signals to the terminal
+## Make sure your terminal emulator sends the right signals to the terminal
 
 Certain keybindings rely on pressing CTRL + SHIFT + key E.g. CTRL+SHIFT+f. Unfortunately, by default this is not supported in vim/neovim. To make it work, we'll need to tell our terminal emulator to intercept this combination of key presses and send input that can be understood by neovim to the terminal. The way to do it and what input you should send varies based on your terminal emulator.
 
@@ -148,7 +154,7 @@ NoobVim uses these extra bindings, please make sure they work.
 | Ctrl-.          |
 | Ctrl-,          |
 
-## Window's Terminal:
+### Window's Terminal:
 
 add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG)
 ```JSON
@@ -164,7 +170,7 @@ Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the
 
 More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
-## Alacritty / Kitty
+### Alacritty / Kitty
 Configure the terminal according to [this guide](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
 # Using code runner
