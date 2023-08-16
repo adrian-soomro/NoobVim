@@ -12,10 +12,10 @@ function installBrew() {
   source "$HOME/.profile"
 }
 
-# function installPacker() {
-#   git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-#  "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
-# }
+function installPacker() {
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
+}
 
 function installNode() {
   brew install nvm
@@ -58,7 +58,7 @@ function installNoobVim() {
 
   mv NoobVim "$pathToConfigDirectory"/nvim
 
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
 }
 
 installEssentials
