@@ -1,15 +1,15 @@
 require('lspsaga').setup({
   finder = {
-    edit = { "o", "<cr>" },
+    edit = "<cr>",
     vsplit = "v",
     split = "i",
     tabe = "t",
-    quit = { "q", "<esc>" },
+    quit = "<esc>"
   },
   code_action = {
     num_shortcut = true,
     keys = {
-      quit = { "q", "<esc>" },
+      quit = "<esc>",
       exec = "<cr>"
     }
   },
@@ -20,13 +20,13 @@ require('lspsaga').setup({
     custom_fix = nil,
     custom_msg = nil,
     keys = {
-      exec_action = { "o", "<cr>" },
-      quit = { "q", "<esc>" },
+      exec_action = "<cr>",
+      quit = "<esc>",
       go_action = "g"
     },
   },
   rename = {
-    quit = { "q", "<esc>" },
+    quit = "<esc>",
     exec = "<CR>",
     mark = "x",
     confirm = "<CR>",
