@@ -2,7 +2,6 @@ local wk = require('which-key')
 local nt_api = require('nvim-tree.api')
 
 local setup_key_mapping = function(bufnr)
-
   local leader_mapping = {
     g = {
       name = "Go to",
@@ -29,6 +28,11 @@ local setup_key_mapping = function(bufnr)
     p = { nt_api.fs.paste, "Paste" },
     q = { nt_api.tree.close, "Close File Tree" },
     v = { nt_api.node.open.vertical, "Open file in vertical split" },
+    m = { nt_api.marks.toggle, "Mark a file for moving" },
+    b = {
+      m = { nt_api.marks.bulk.move, "Move marked files" },
+      d = { nt_api.marks.bulk.delete, "Delete marked files" },
+    },
   }
 
   local leader_opts = {
@@ -58,7 +62,7 @@ local function open_nvim_tree(data)
     "dashboard",
     "DiffviewFiles"
   }
-    -- buffer is a real file on the disk
+  -- buffer is a real file on the disk
   local real_file = vim.fn.filereadable(data.file) == 1
 
   -- buffer is a [No Name]
@@ -138,4 +142,3 @@ require('nvim-web-devicons').setup {
 }
 
 vim.api.nvim_create_autocmd({ "BufAdd" }, { callback = open_nvim_tree })
-
