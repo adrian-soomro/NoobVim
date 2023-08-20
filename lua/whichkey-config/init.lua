@@ -71,6 +71,7 @@ wk.setup({
 })
 
 local leader_mapping = {
+  u = { "<cmd>source ~/.config/nvim/lua/luasnip-config/init.lua<cr>", "Save snips" },
   h = {
     name = "Hunk stuff (Git)",
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
@@ -120,7 +121,7 @@ local mapping = {
         return '<Ignore>'
       end, "Jump to previous hunk"
     },
-    d = { function ()
+    d = { function()
       require("lspsaga.diagnostic"):goto_prev()
     end, "Jump to previous diagnostic" }
   },
@@ -132,7 +133,7 @@ local mapping = {
         return '<Ignore>'
       end, "Jump to next hunk"
     },
-    d = { function ()
+    d = { function()
       require("lspsaga.diagnostic"):goto_next()
     end, "Jump to next diagnostic" }
   },
