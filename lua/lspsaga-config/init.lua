@@ -36,7 +36,7 @@ require('lspsaga').setup({
     keys = {
       jump = "o",
       expand_collapse = "u",
-      quit = "<esc>" ,
+      quit = "<esc>",
     },
   },
   symbol_in_winbar = {
@@ -48,4 +48,19 @@ require('lspsaga').setup({
     respect_root = false,
     color_mode = true,
   },
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
 })
