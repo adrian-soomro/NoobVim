@@ -25,6 +25,7 @@ return packer.startup({
     use 'mfussenegger/nvim-dap'
     use 'nvim-telescope/telescope-dap.nvim'
     use 'cljoly/telescope-repo.nvim'
+    use 'windwp/nvim-ts-autotag'
     use {
       'glepnir/dashboard-nvim',
       event = 'VimEnter',
