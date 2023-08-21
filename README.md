@@ -190,6 +190,5 @@ You can run your project in a single keypress, similar to other popular IDEs. To
 Any docs around how to maintain this can be found [here](./docs/maintenance.md)  
 
 # TODO
-- configure luasnip 
 - add table of plugins
 
