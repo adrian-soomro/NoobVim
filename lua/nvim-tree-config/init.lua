@@ -119,7 +119,7 @@ require("nvim-tree").setup({
         git = {
           unstaged = "●",
           staged = "S",
-          ignored = "﫸",
+          ignored = "󰗹",
           deleted = "D",
           untracked = "●",
           renamed = "➜",
