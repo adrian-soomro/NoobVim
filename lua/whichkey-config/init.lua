@@ -71,7 +71,6 @@ wk.setup({
 })
 
 local leader_mapping = {
-  u = { "<cmd>source ~/.config/nvim/lua/luasnip-config/init.lua<cr>", "Save snips" },
   h = {
     name = "Hunk stuff (Git)",
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage hunk" },
