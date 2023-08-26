@@ -10,14 +10,14 @@ local js_snippets = {
     [[
       const {} = ({}) => {{
         {}
-      }})
+      }}
     ]],
     { i(1, "functionName"), i(2, "param1..."), i(0) })),
   s("fn async", fmt(
     [[
       const {} = async ({}) => {{
         {}
-      }})
+      }}
     ]],
     { i(1, "functionName"), i(2, "param1..."), i(0) })),
   s("map", fmt(
