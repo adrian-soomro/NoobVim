@@ -9,8 +9,8 @@ require('bufferline').setup({
     filetype = { enabled = true },
     sepatarator = { left = '▎' },
     inactive = { sepatarator = { left = '▎' } },
-    button = '',
-    pinned = { button = '車' },
+    button = '',
+    pinned = { button = '' },
     modified = { button = '●' }
   },
   insert_at_end = true,
