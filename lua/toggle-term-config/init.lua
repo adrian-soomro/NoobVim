@@ -1,5 +1,4 @@
 require("toggleterm").setup {
-  -- open_mapping = [[<A-`>]],
   hide_numbers = true,
   start_in_insert = true,
 }
