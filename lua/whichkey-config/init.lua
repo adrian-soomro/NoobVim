@@ -174,6 +174,8 @@ local mapping = {
   ['<A-8>'] = { "<cmd>BufferGoto 8<cr>", "Go 'tab' number 8" },
   ['<A-9>'] = { "<cmd>BufferGoto 9<cr>", "Go 'tab' number 9" },
   ['<A-0>'] = { "<cmd>BufferGoto 0<cr>", "Go 'tab' number 0" },
+  ['<A-;>'] = { "<cmd>1ToggleTerm<cr>", "Open first terminal" },
+  ["<A-'>"] = { "<cmd>2ToggleTerm<cr>", "Open second terminal" },
 }
 
 local insert_mapping = {}
