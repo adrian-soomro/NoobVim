@@ -17,9 +17,8 @@ if not js_snippets_status_ok then
 end
 
 local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
 
-lua_snippets.setup_snippets(ls, fmt, rep)
+lua_snippets.setup_snippets(ls)
 
 js_snippets.setup_snippets(ls, fmt)
 js_snippets.setup_snippets(ls, fmt)
