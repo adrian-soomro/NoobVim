@@ -16,13 +16,11 @@ if not js_snippets_status_ok then
   return
 end
 
-local fmt = require("luasnip.extras.fmt").fmt
-
 lua_snippets.setup_snippets(ls)
 
-js_snippets.setup_snippets(ls, fmt)
-js_snippets.setup_snippets(ls, fmt)
-js_snippets.setup_snippets(ls, fmt)
+js_snippets.setup_snippets(ls)
+js_snippets.setup_snippets(ls)
+js_snippets.setup_snippets(ls)
 
 ls.config.set_config {
   history = true,

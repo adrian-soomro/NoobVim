@@ -1,6 +1,8 @@
 local M = {}
 
-local function get_snippets(ls, fmt)
+local fmt = require("luasnip.extras.fmt").fmt
+
+local function get_snippets(ls)
   local s, i = ls.s, ls.insert_node
   return {
     s("fn", fmt(
