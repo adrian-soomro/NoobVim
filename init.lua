@@ -15,6 +15,7 @@ require('autopairs-config')
 require('whichkey-config')
 require('dap-config')
 require('diffview-config')
+require('file-skeleton-config')
 require('settings')
 
 vim.api.nvim_set_var('noobvim', {
