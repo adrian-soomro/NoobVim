@@ -1,5 +1,6 @@
 local wk = require('which-key')
 local nt_api = require('nvim-tree.api')
+local file_skeleton_utils = require('file-skeleton-config')
 
 local setup_key_mapping = function(bufnr)
   local leader_mapping = {
@@ -36,21 +37,21 @@ local setup_key_mapping = function(bufnr)
   }
 
   local leader_opts = {
-    mode = "n", -- NORMAL mode
+    mode = "n",     -- NORMAL mode
     prefix = "<leader>",
     buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
+    silent = true,  -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    nowait = true,  -- use `nowait` when creating keymaps
   }
 
   local opts = {
-    mode = "n", -- NORMAL mode
+    mode = "n",     -- NORMAL mode
     prefix = "",
     buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
+    silent = true,  -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    nowait = true,  -- use `nowait` when creating keymaps
   }
 
   wk.register(leader_mapping, leader_opts)
@@ -142,3 +143,7 @@ require('nvim-web-devicons').setup {
 }
 
 vim.api.nvim_create_autocmd({ "BufAdd" }, { callback = open_nvim_tree })
+
+nt_api.events.subscribe(nt_api.events.Event.FileCreated, function(data)
+  file_skeleton_utils.insert_skeleton(data.fname)
+end)
