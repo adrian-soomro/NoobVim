@@ -111,7 +111,7 @@
     "commit": "91ff86c"
   },
   "lspsaga.nvim": {
-    "commit": "01b9633"
+    "commit": "14f0c87"
   },
   "williamboman/mason-lspconfig.nvim": {
     "commit": "828a538"

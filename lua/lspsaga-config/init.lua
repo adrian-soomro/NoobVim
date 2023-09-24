@@ -1,10 +1,15 @@
 require('lspsaga').setup({
   finder = {
-    edit = "<cr>",
-    vsplit = "v",
-    split = "i",
-    tabe = "t",
-    quit = "<esc>"
+    default = 'tyd+ref+imp+def',
+    keys = {
+      edit = "e",
+      toggle_or_open = "<cr>",
+      vsplit = "v",
+      split = "s",
+      tabe = "t",
+      tabnew = "r",
+      quit = "<esc>"
+    },
   },
   code_action = {
     num_shortcut = true,
