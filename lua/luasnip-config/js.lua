@@ -70,8 +70,8 @@ local function get_snippets(ls)
   }
 end
 
-function M.setup_snippets(ls, fmt)
-  local snippets = get_snippets(ls, fmt)
+function M.setup_snippets(ls)
+  local snippets = get_snippets(ls)
 
   ls.add_snippets("javascript", snippets)
   ls.add_snippets("typescript", snippets)
