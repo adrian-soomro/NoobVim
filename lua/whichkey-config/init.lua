@@ -86,7 +86,6 @@ local leader_mapping = {
     name = "Go to",
     d = { "<cmd>Lspsaga peek_definition<cr>", "Peek definition" },
     i = { "<cmd>Lspsaga finder<cr>", "Check out the implementations" },
-    s = { "<cmd>Lspsaga hover_doc<cr>", "Check out the signature" },
   },
   c = {
     name = "Code",
@@ -112,6 +111,7 @@ local leader_mapping = {
 
 local mapping = {
   R = { "<cmd>Lspsaga rename<cr>", "Rename all occurences" },
+  K = { "<cmd>Lspsaga hover_doc<cr>", "Check out the signature" },
   ["["] = {
     ["["] = {
       function()
