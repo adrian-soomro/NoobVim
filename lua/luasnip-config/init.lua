@@ -1,74 +1,26 @@
-local ls = require("luasnip")
+local ls_status_ok, ls = pcall(require, 'luasnip')
+if not ls_status_ok then
+  print("Error importing luasnip")
+  return
+end
 
-local s, i = ls.s, ls.insert_node
+local lua_snippets_status_ok, lua_snippets = pcall(require, 'luasnip-config/lua')
+if not lua_snippets_status_ok then
+  print("Error importing lua snippets")
+  return
+end
 
-local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
+local js_snippets_status_ok, js_snippets = pcall(require, 'luasnip-config/js')
+if not js_snippets_status_ok then
+  print("Error importing js snippets")
+  return
+end
 
-local js_snippets = {
-  s("fn", fmt(
-    [[
-      const {} = ({}) => {{
-        {}
-      }}
-    ]],
-    { i(1, "functionName"), i(2, "param1..."), i(0) })),
-  s("fn async", fmt(
-    [[
-      const {} = async ({}) => {{
-        {}
-      }}
-    ]],
-    { i(1, "functionName"), i(2, "param1..."), i(0) })),
-  s("map", fmt(
-    [[
-      {}.map(({}) => {{
-        {}
-      }})
-    ]],
-    { i(1, "iterable"), i(2, "element"), i(0) })),
-  s("filter", fmt(
-    [[
-      {}.filter(({}) => {{
-        {}
-      }})
-    ]],
-    { i(1, "iterable"), i(2, "element"), i(0) })),
-  s("desc", fmt(
-    [[
-      describe('{}', () => {{
-        {}
-      }})
-    ]],
-    { i(1), i(0) })),
-  s("it", fmt(
-    [[
-      it('{}', () => {{
-        {}
-      }})
-    ]],
-    { i(1), i(0) })),
-  s("it async", fmt(
-    [[
-      it('{}', async () => {{
-        {}
-      }})
-    ]],
-    { i(1), i(0) }))
-}
+lua_snippets.setup_snippets(ls)
 
-ls.add_snippets("lua", {
-  s("req", fmt(
-    [[
-      local {} = require('{}')
-      {}
-    ]],
-    { i(1, "module"), rep(1), i(0) }))
-})
-
-ls.add_snippets("javascript", js_snippets)
-ls.add_snippets("typescript", js_snippets)
-ls.add_snippets("svelte", js_snippets)
+js_snippets.setup_snippets(ls)
+js_snippets.setup_snippets(ls)
+js_snippets.setup_snippets(ls)
 
 ls.config.set_config {
   history = true,
