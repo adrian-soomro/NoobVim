@@ -18,8 +18,17 @@ local function get_skeleton_file_contents(extension)
   return ""
 end
 
+local function insert_dynamic_values(skeleton_file_contents, newly_created_file_path)
+  local pattern = "%${FILE_NAME}"
+  local file_name = utils.get_file_name(newly_created_file_path)
+  local result = string.gsub(skeleton_file_contents, pattern, file_name)
+
+  return result
+end
+
 function M.insert_skeleton(file_path)
-  local extension = utils.get_file_extension(file_path)
+  local extensions = utils.get_file_extension(file_path)
+  local extension = table.concat(extensions, ".")
 
   local supported_extensions = utils.list_dir(get_path_to_skeleton_directory())
   if not utils.has_value(supported_extensions, extension .. ".skeleton") then
@@ -28,7 +37,8 @@ function M.insert_skeleton(file_path)
 
   local newly_created_file = io.open(file_path, "w")
   if (newly_created_file ~= nil) then
-    newly_created_file:write(get_skeleton_file_contents(extension))
+    local skeleton_file_contents = get_skeleton_file_contents(extension)
+    newly_created_file:write(insert_dynamic_values(skeleton_file_contents, file_path))
     newly_created_file:close()
   end
 end
