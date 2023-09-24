@@ -33,6 +33,19 @@ local function get_snippets(ls)
         }})
       ]],
       { i(1, "iterable"), i(2, "element"), i(0) })),
+    s("reduce", fmt(
+      [[
+        {1}.reduce((accumulator, {2}) => {{
+          {4}
+          return accumulator
+        }}, {3})
+      ]],
+      { i(1, "iterable"), i(2, "value"), i(3, "initialValue"), i(4) })),
+    s("log", fmt(
+      [[
+        console.log({})
+      ]],
+      { i(0) })),
     s("desc", fmt(
       [[
         describe('{}', () => {{
