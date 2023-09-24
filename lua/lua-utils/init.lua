@@ -54,4 +54,9 @@ function M.get_file_extension(url)
   return extensions
 end
 
+function M.get_file_name(url)
+  local file_name_with_extension = string.match(url, "[/\\]([^/\\]+)$")
+  return string.match(file_name_with_extension, "^(.-)%.") or file_name_with_extension
+end
+
 return M

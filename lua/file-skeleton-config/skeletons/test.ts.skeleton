@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
-describe('some module'), () => {
-  it.('does something'), () => {
-
+describe('${FILE_NAME}'), () => {
+  it('does something'), () => {
+    
   }
 }
