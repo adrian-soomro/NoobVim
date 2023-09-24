@@ -19,7 +19,8 @@ local function get_skeleton_file_contents(extension)
 end
 
 function M.insert_skeleton(file_path)
-  local extension = utils.get_file_extension(file_path)
+  local extensions = utils.get_file_extension(file_path)
+  local extension = table.concat(extensions, ".")
 
   local supported_extensions = utils.list_dir(get_path_to_skeleton_directory())
   if not utils.has_value(supported_extensions, extension .. ".skeleton") then

@@ -39,8 +39,19 @@ function M.has_value(tab, val)
   return false
 end
 
+---gets all the file extensions present at the end of a path. E.g. /foo/bar.baz.test.ts will return { "baz", "test", "ts" }
+---@param url string path to a file, can be relative or absolute
+---@return table a table of all file extensions present on the file at the end of the path
 function M.get_file_extension(url)
-  return url:match("^.+(%..+)$"):sub(2)
+  local extension_pattern = "%.([%a%d]+)"
+  local extensions = {}
+  for ext in url:gmatch(extension_pattern) do
+    if ext ~= "" then
+      table.insert(extensions, ext)
+    end
+  end
+
+  return extensions
 end
 
 return M
