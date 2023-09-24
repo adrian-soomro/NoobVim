@@ -176,10 +176,10 @@ Configure the terminal according to [this guide](https://www.reddit.com/r/neovim
 # Using code runner
 You can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
 
+*NB* you'll need to be in the project's directory for this to work as expected.
+
 # File Skeleton (template) support
 If you wish to pre-populate a file with some content every time you create it, simply add a new `{file_extension}.skeleton` file that has your template to the [skeletons](./lua/file-skeleton-config/skeletons) directory. The contents of this skeleton file will be automatically inserted into any new file with that extension.
-
-*NB* you'll need to be in the project's directory for this to work as expected.
 
 ## ❓ Miscelaneous
 - Some of the plugins rely on a Nerd font, [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) will have a nice one. 
