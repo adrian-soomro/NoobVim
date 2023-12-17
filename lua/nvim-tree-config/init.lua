@@ -2,6 +2,13 @@ local wk = require('which-key')
 local nt_api = require('nvim-tree.api')
 local file_skeleton_utils = require('file-skeleton-config')
 
+local function bulk_delete()
+  local marked_files = nt_api.marks.list()
+  for _, value in pairs(marked_files) do
+    os.execute("rm -rf " .. value.absolute_path)
+  end
+end
+
 local setup_key_mapping = function(bufnr)
   local leader_mapping = {
     g = {
@@ -32,7 +39,7 @@ local setup_key_mapping = function(bufnr)
     m = { nt_api.marks.toggle, "Mark a file for moving" },
     b = {
       m = { nt_api.marks.bulk.move, "Move marked files" },
-      d = { nt_api.marks.bulk.delete, "Delete marked files" },
+      d = { bulk_delete, "Delete marked files" },
     },
   }
 
