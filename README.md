@@ -156,14 +156,47 @@ NoobVim uses these extra bindings, please make sure they work.
 
 ### Window's Terminal:
 
-add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG)
+add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG) to register all the combinations above.
 ```JSON
         {
-            "command": {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[87;5u"
+            },
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[86;5u"
+            },
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "command": 
+            {
                 "action": "sendInput",
                 "input": "\u001b[70;5u"
             },
             "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[46;5u"
+            },
+            "keys": "ctrl+period"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[44;5u"
+            },
+            "keys": "ctrl+comma"
         }
 ```
 Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the input would be `\u001b[86;5u`. To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
