@@ -156,17 +156,50 @@ NoobVim uses these extra bindings, please make sure they work.
 
 ### Window's Terminal:
 
-add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG)
+add this snippet to your [settings.json file](./docs/images/windows_terminal_settings.PNG) to register all the combinations above.
 ```JSON
         {
-            "command": {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[87;5u"
+            },
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[86;5u"
+            },
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "command": 
+            {
                 "action": "sendInput",
                 "input": "\u001b[70;5u"
             },
             "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[46;5u"
+            },
+            "keys": "ctrl+period"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[44;5u"
+            },
+            "keys": "ctrl+comma"
         }
 ```
-Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the input would be `\u001b[86;5u`. To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 
 More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
@@ -186,7 +219,9 @@ If you wish to pre-populate a file with some content every time you create it, s
 
 ### WSL2 Specific
 - With regards to the [font requirement](#Miscelaneous) - the fonts need to be installed on the host machine, and set for WSL2 directly in the properties of the WSL2 app.
-- Installing [VcXsrv](https://youtu.be/_MgrjgQqDcE?t=755) is highly recommended - this will allow you to share os clipboard between WSL2 host and the WSL2 instance, so that it can be used in nvim, just note that you'll also need to set up `DISPLAY` env var in your bash/zsh.rc and [pass `-ac` as additional argument to VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502345378)
+- Installing [VcXsrv](https://youtu.be/_MgrjgQqDcE?t=755) is highly recommended - this will allow you to share os clipboard between WSL2 host and the WSL2 instance, so that it can be used in nvim, just note that you'll also need to set up `DISPLAY` env var in your bash/zsh.rc 
+`export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"`
+and [pass `-ac` as additional argument to VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502345378)
 - Accessing your WSL2 instance through the windows [Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701) app is recommended, as this terminal emulator supports italics and other styles of text, while having richer support for nerd-fonts
 
 # Maintenance 
