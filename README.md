@@ -107,7 +107,7 @@ if you're on Ubuntu, you can run the install script (you'll need su privileges)
 
 ```bash 
 curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
-if [[ "$(md5sum ./install.sh)" =~ "cae50d24390073c3114f2b1110197e9b" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+if [[ "$(md5sum ./install.sh)" =~ "3a0bbfdfef81fd6bd7ce80dc552d3847" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
 ```
 
 if you're on Debian, you can run this script (you'll need su privileges)
@@ -115,7 +115,7 @@ if you're on Debian, you can run this script (you'll need su privileges)
 ```bash 
 sudo apt-get install curl -y && \
 curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
-if [[ "$(md5sum ./install.sh)" =~ "cae50d24390073c3114f2b1110197e9b" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+if [[ "$(md5sum ./install.sh)" =~ "3a0bbfdfef81fd6bd7ce80dc552d3847" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
 ```
 
 if not, you'll need to do the following

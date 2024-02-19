@@ -2,7 +2,7 @@
 
 function installEssentials() {
   sudo apt-get update
-  sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv -y
+  sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv xclip -y
 }
 
 function installBrew() {
