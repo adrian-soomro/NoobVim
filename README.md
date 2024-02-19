@@ -199,7 +199,7 @@ add this snippet to your [settings.json file](./docs/images/windows_terminal_set
             "keys": "ctrl+comma"
         }
 ```
-Where the code 70 corresponds to F. If you wanted to also bind ctrl+shift+v, the input would be `\u001b[86;5u`. To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
+To add any other characters, have a look at this [list](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
 
 More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
