@@ -137,9 +137,9 @@ local mapping = {
     end, "Jump to next diagnostic" }
   },
   ['<F5>'] = { "<cmd>RunCode<cr>", "Run project (see CRProjects) or a file if outside a project" },
-  ['<F8>'] = { "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)" },
-  ['<F9>'] = { "<cmd>lua require 'dap'.step_into()<cr>", "Step into (debug)" },
-  ['<F10>'] = { "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)" },
+  ['<F10>'] = { "<cmd>lua require 'dap'.step_over()<cr>", "Step over (debug)" },
+  ['<F11>'] = { "<cmd>lua require 'dap'.step_into()<cr>", "Step into (debug)" },
+  ['<F12>'] = { "<cmd>lua require 'dap'.step_out()<cr>", "Step out (debug)" },
   ['<esc>'] = { "<cmd>tabclose<cr>", "Close current tab (window)" },
   ['<C-p>'] = {
     function()
