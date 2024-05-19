@@ -140,17 +140,15 @@ return packer.startup({
     }
     use {
       'williamboman/mason.nvim',
-      config = function()
-        require('mason').setup({
-          ensure_installed = { "debugpy" },
-          automatic_installation = true
-        })
-      end
     }
     use {
       'williamboman/mason-lspconfig.nvim',
       requires = { "williamboman/mason.nvim" },
       config = function()
+        require('mason').setup({
+          ensure_installed = { "debugpy" },
+          automatic_installation = true
+        })
         require('mason-lspconfig').setup({
           ensure_installed = { "bashls", "omnisharp", "cssls", "cucumber_language_server", "dockerls",
             "docker_compose_language_service", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls",
