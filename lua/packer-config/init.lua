@@ -126,7 +126,11 @@ return packer.startup({
       end }
     use {
       'mxsdev/nvim-dap-vscode-js',
-      requires = { "mfussenegger/nvim-dap" },
+      requires = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
+    }
+    use {
+      'mfussenegger/nvim-dap-python',
+      requires = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
     }
     use {
       'theHamsta/nvim-dap-virtual-text',
@@ -146,8 +150,10 @@ return packer.startup({
       config = function()
         require('mason-lspconfig').setup({
           ensure_installed = { "bashls", "omnisharp", "cssls", "cucumber_language_server", "dockerls",
-            "docker_compose_language_service", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls", "tsserver",
-            "lua_ls", "marksman", "powershell_es", "pylsp", "rust_analyzer", "sqls", "svelte", "taplo", "terraformls", "tflint",
+            "docker_compose_language_service", "debugpy", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls",
+            "tsserver",
+            "lua_ls", "marksman", "powershell_es", "pylsp", "rust_analyzer", "sqls", "svelte", "taplo", "terraformls",
+            "tflint",
             "vuels", "lemminx", "yamlls" },
           automatic_installation = true
         })
