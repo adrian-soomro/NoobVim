@@ -141,7 +141,10 @@ return packer.startup({
     use {
       'williamboman/mason.nvim',
       config = function()
-        require('mason').setup({})
+        require('mason').setup({
+          ensure_installed = { "debugpy" },
+          automatic_installation = true
+        })
       end
     }
     use {
@@ -150,7 +153,7 @@ return packer.startup({
       config = function()
         require('mason-lspconfig').setup({
           ensure_installed = { "bashls", "omnisharp", "cssls", "cucumber_language_server", "dockerls",
-            "docker_compose_language_service", "debugpy", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls",
+            "docker_compose_language_service", "eslint", "graphql", "html", "helm_ls", "jsonls", "jdtls",
             "tsserver",
             "lua_ls", "marksman", "powershell_es", "pylsp", "rust_analyzer", "sqls", "svelte", "taplo", "terraformls",
             "tflint",
