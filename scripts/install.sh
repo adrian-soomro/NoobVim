@@ -62,9 +62,14 @@ function installNoobVim() {
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
 }
 
+function installAdditionalDependenciesWithMason() {
+  nvim --headless -c "MasonInstall debugpy" -c "qall"
+}
+
 installEssentials
 installBrew
 installPacker
 installOtherBinaries
 installNvim
 installNoobVim
+installAdditionalDependenciesWithMason
