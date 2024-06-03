@@ -38,18 +38,18 @@ function installOtherBinaries() {
 }
 
 function installNvim() {
-  startingDirectory="$PWD"
   mkdir -p ~/tmp
-  cd ~/tmp
+  pushd ~/tmp
   wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz
   tar xzf nvim-linux64.tar.gz
   sudo mv nvim-linux64/bin/nvim /usr/bin/
   sudo mv nvim-linux64/lib/nvim/ /usr/lib/
   sudo mv nvim-linux64/share/nvim /usr/share/
-  cd "$startingDirectory"
+  popd
 }
 
 function installNoobVim() {
+  source "$HOME/.profile"
   git clone https://github.com/adrian-soomro/NoobVim.git
   pathToConfigDirectory="$HOME/.config"
   if [ ! -d "$pathToConfigDirectory" ]; then
@@ -66,6 +66,10 @@ function installAdditionalDependenciesWithMason() {
   nvim --headless -c "MasonInstall debugpy" -c "qall"
 }
 
+function tidyUp() {
+ rm -rf "$HOME/tmp"
+}
+
 installEssentials
 installBrew
 installPacker
@@ -73,3 +77,4 @@ installOtherBinaries
 installNvim
 installNoobVim
 installAdditionalDependenciesWithMason
+tidyUp

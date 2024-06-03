@@ -10,7 +10,10 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
     use 'EdenEast/nightfox.nvim'
     use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
+    use {
+      'nvim-telescope/telescope.nvim'
+      requires = { 'nvim-lua/plenary.nvim' }
+    }
     use 'nvim-treesitter/playground'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-cmdline'
