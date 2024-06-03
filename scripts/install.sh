@@ -32,7 +32,7 @@ function installNode() {
 }
 
 function installOtherBinaries() {
-  brew install ripgrep glow fd java dotnet@7 dotnet@6 go
+  brew install ripgrep glow fd java dotnet@6 go
   
   installNode
 }
