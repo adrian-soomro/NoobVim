@@ -11,7 +11,7 @@ return packer.startup({
     use 'EdenEast/nightfox.nvim'
     use 'nvim-lua/plenary.nvim'
     use {
-      'nvim-telescope/telescope.nvim'
+      'nvim-telescope/telescope.nvim',
       requires = { 'nvim-lua/plenary.nvim' }
     }
     use 'nvim-treesitter/playground'
