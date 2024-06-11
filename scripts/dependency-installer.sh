@@ -55,5 +55,5 @@ installPacker
 installOtherBinaries
 installNvim
 
-bash "$SCRIPT_DIR/noobvim-install.sh"
+bash "$SCRIPT_DIR/noobvim-installer.sh"
 

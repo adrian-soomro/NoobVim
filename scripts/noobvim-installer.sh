@@ -2,7 +2,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 function installNoobVim() {
   source "$HOME/.profile"
-  git clone -b feature/add-python-debugger https://github.com/adrian-soomro/NoobVim.git
+  git clone https://github.com/adrian-soomro/NoobVim.git
   pathToConfigDirectory="$HOME/.config"
   if [ ! -d "$pathToConfigDirectory" ]; then
     mkdir -p "$pathToConfigDirectory"

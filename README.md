@@ -103,19 +103,14 @@ NoobVim uses [which-key plugin](https://github.com/folke/which-key.nvim) to keep
 # 🚀 Getting started
 To get up and running, 
 
-if you're on Ubuntu, you can run the install script (you'll need su privileges)
+if you're on Ubuntu/Debian, you can run the install script (you'll need su privileges)
 
 ```bash 
-curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
-if [[ "$(md5sum ./install.sh)" =~ "8668652d0b6a44250a003c1fe05918f5" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
-```
-
-if you're on Debian, you can run this script (you'll need su privileges)
-
-```bash 
-sudo apt-get install curl -y && \
-curl https://raw.githubusercontent.com/adrian-soomro/NoobVim/main/scripts/install.sh --output install.sh && \
-if [[ "$(md5sum ./install.sh)" =~ "8668652d0b6a44250a003c1fe05918f5" ]]; then bash ./install.sh; else echo "Somebody has tampered with the script, not running it."; fi
+git clone -n --depth=1 --filter=tree:0 https://github.com/adrian-soomro/NoobVim && \
+cd NoobVim && \
+git sparse-checkout set --no-cone scripts && git checkout && \ 
+HASH=$(find ./scripts/* -type f -exec md5sum {} + | md5sum | cut -d " " -f1) && \
+if [[ "$HASH" =~ "137bac0078a5681a659a241e3bd50e10" ]]; then bash ./scripts/installer.sh; else echo "The scripts directory has been tampered with, not runnning anything."; fi
 ```
 
 if not, you'll need to do the following
