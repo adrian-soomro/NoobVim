@@ -33,9 +33,11 @@ function installNode() {
 }
 
 function installOtherBinaries() {
+  pushd "$SCRIPT_DIR/tmp"
   brew install ripgrep glow fd java dotnet@6 go
   
   installNode
+  popd
 }
 
 function installNvim() {
