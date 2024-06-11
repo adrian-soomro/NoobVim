@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 function installEssentials() {
   sudo apt-get update
   sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv xclip -y
@@ -32,34 +33,20 @@ function installNode() {
 }
 
 function installOtherBinaries() {
-  brew install ripgrep glow fd java dotnet@7 dotnet@6 go
+  brew install ripgrep glow fd java dotnet@6 go
   
   installNode
 }
 
 function installNvim() {
-  startingDirectory="$PWD"
-  mkdir -p ~/tmp
-  cd ~/tmp
+  mkdir -p "$SCRIPT_DIR/tmp"
+  pushd "$SCRIPT_DIR/tmp"
   wget https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-linux64.tar.gz
   tar xzf nvim-linux64.tar.gz
   sudo mv nvim-linux64/bin/nvim /usr/bin/
   sudo mv nvim-linux64/lib/nvim/ /usr/lib/
   sudo mv nvim-linux64/share/nvim /usr/share/
-  cd "$startingDirectory"
-}
-
-function installNoobVim() {
-  git clone https://github.com/adrian-soomro/NoobVim.git
-  pathToConfigDirectory="$HOME/.config"
-  if [ ! -d "$pathToConfigDirectory" ]; then
-    mkdir -p "$pathToConfigDirectory"
-  fi 
-
-  mv NoobVim "$pathToConfigDirectory"/nvim
-
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerInstall' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
+  popd
 }
 
 installEssentials
@@ -67,4 +54,6 @@ installBrew
 installPacker
 installOtherBinaries
 installNvim
-installNoobVim
+
+bash "$SCRIPT_DIR/noobvim-installer.sh"
+

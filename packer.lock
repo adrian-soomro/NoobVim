@@ -17,6 +17,9 @@
   "nvim-dap-vscode-js": {
     "commit": "03bd296"
   },
+  "nvim-dap-python": {
+    "commit": "3dffa58"
+  },
   "nightfox.nvim": {
     "commit": "77aa745"
   },
