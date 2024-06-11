@@ -5,3 +5,6 @@ echo "Getting dependencies"
 
 echo "installing NoobVim"
 "$SCRIPT_DIR/noobvim-installer.sh"
+
+cd "$HOME"
+rm -rf "$OLDPWD"
