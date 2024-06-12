@@ -110,7 +110,8 @@ git clone -n --depth=1 --filter=tree:0 https://github.com/adrian-soomro/NoobVim 
 cd NoobVim && \
 git sparse-checkout set --no-cone scripts && git checkout && \ 
 HASH=$(find ./scripts/* -type f -exec md5sum {} + | md5sum | cut -d " " -f1) && \
-if [[ "$HASH" =~ "4bab7a9799ce9101d918404258984ba7" ]]; then bash ./scripts/installer.sh; else echo "The scripts directory has been tampered with, not runnning anything."; fi
+if [[ "$HASH" =~ "4b730a92838b8348f28c2e07d164e4b4" ]]; then bash ./scripts/installer.sh; else echo "The scripts directory has been tampered with, not runnning anything."; fi && \
+cd "$HOME" && rm -rf "$OLDPWD"
 ```
 
 if not, you'll need to do the following
