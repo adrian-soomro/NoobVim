@@ -200,7 +200,23 @@ To add any other characters, have a look at this [list](https://en.wikipedia.org
 More about escaping characters can be found [here](https://github.com/microsoft/terminal/issues/406) and more about how the input is formulated [here](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
 
 ### Alacritty / Kitty
-Configure the terminal according to [this guide](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/)
+You can use this configuration file to enable CTRL+KEY bindings that NoobVim relies on. You can also use [this guide](https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/) to configure it to your liking. 
+
+```toml
+[font]
+normal = { family= "FiraCode Nerd Font Mono", style= "Regular" }
+size = 12
+
+[keyboard]
+bindings = [
+    { key= "F",  mods= "Control|Shift", action= "ReceiveChar"},
+    { key= "W",  mods= "Control|Shift", action= "ReceiveChar"},
+    { key= "V",  mods= "Control|Shift", action= "ReceiveChar"},
+    { key= "v",  mods= "Control", action="Paste"},
+    { key= ".",  mods= "Control", action= "ReceiveChar"},
+    { key= ",",  mods= "Control", action= "ReceiveChar"}
+]
+```
 
 # Using code runner
 You can run your project in a single keypress, similar to other popular IDEs. To do so, you'll first need to tell [code_runner](https://github.com/CRAG666/code_runner.nvim#add-projects) how to run your project.
