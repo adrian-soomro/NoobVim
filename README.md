@@ -106,12 +106,12 @@ To get up and running,
 if you're on Ubuntu/Debian, you can run the install script (you'll need su privileges)
 
 ```bash 
+installLocation="$HOME/$(date +%s)-noobvim-install" && pushd "$installLocation"  && \
 git clone -n --depth=1 --filter=tree:0 https://github.com/adrian-soomro/NoobVim && \
-cd NoobVim && \
-git sparse-checkout set --no-cone scripts && git checkout && \ 
+cd NoobVim && git sparse-checkout set --no-cone scripts && git checkout && \ 
 HASH=$(find ./scripts/* -type f -exec md5sum {} + | md5sum | cut -d " " -f1) && \
-if [[ "$HASH" =~ "4b730a92838b8348f28c2e07d164e4b4" ]]; then bash ./scripts/installer.sh; else echo "The scripts directory has been tampered with, not runnning anything."; fi && \
-cd "$HOME" && rm -rf "$OLDPWD"
+if [[ "$HASH" =~ "6db584e5e3de1303ea125daaa661343d" ]]; then bash ./scripts/installer.sh; else echo "The scripts directory has been tampered with, not runnning anything."; fi && \
+popd && rm -rf "$installLocation"
 ```
 
 if not, you'll need to do the following
