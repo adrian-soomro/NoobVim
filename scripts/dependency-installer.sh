@@ -3,7 +3,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 function installEssentials() {
   sudo apt-get update
-  sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv xclip -y
+  sudo apt-get install build-essential procps wget file git cmake unzip python3-pip python3-venv xclip dotnet-sdk-8.0 -y
 }
 
 function installBrew() {
@@ -34,7 +34,7 @@ function installNode() {
 
 function installOtherBinaries() {
   pushd "$SCRIPT_DIR/tmp"
-  brew install ripgrep glow fd java dotnet@6 go
+  brew install ripgrep glow fd java go
   
   installNode
   popd
