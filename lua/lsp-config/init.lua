@@ -1,8 +1,9 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local util = require 'lspconfig/util'
+
 local lsp_flags = {
   debounce_text_changes = 150,
 }
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 --Enable (broadcasting) snippet capability for completion
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -62,9 +63,14 @@ require('lspconfig').jsonls.setup {
   on_attach = on_attach
 }
 
-require('lspconfig').csharp_ls.setup {
+require('lspconfig').omnisharp.setup {
   flags = lsp_flags,
   capabilities = capabilities,
+  cmd = { "dotnet", vim.fn.stdpath "data" .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+  enable_import_completion = true,
+  organize_imports_on_format = true,
+  enable_roslyn_analyzers = true,
+  root_dir= util.root_pattern("*.sln", "*.csproj", "omnisharp.json", "function.json", ".vsconfig"),
   on_attach = on_attach
 }
 
