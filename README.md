@@ -110,8 +110,8 @@ TMP_DIR="$HOME/$(date +%s)-noobvim-install" && mkdir -p "$TMP_DIR" && pushd "$TM
 git clone -n --depth=1 --filter=tree:0 https://github.com/adrian-soomro/NoobVim && \
 cd NoobVim && git sparse-checkout set --no-cone scripts && git checkout && \ 
 HASH=$(find ./scripts/* -type f -exec md5sum {} + | md5sum | cut -d " " -f1) && \
-if [[ "$HASH" =~ "fc631c413572140a044ac318f4318a92" ]]; then bash ./scripts/installer.sh "$TMP_DIR"; else echo "The scripts directory has been tampered with, not runnning anything."; fi && \
-popd && rm -rf "$TMP_DIR" 
+if [[ "$HASH" =~ "fc631c413572140a044ac318f4318a92" ]]; then bash ./scripts/installer.sh ; else echo "The scripts directory has been tampered with, not runnning anything."; fi && \
+popd && rm -rf "$TMP_DIR"
 ```
 
 if not, you'll need to do the following
