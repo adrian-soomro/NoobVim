@@ -24,6 +24,7 @@ function tidyUp() {
   source "$HOME/.profile"
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerInstall' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
   nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -u "$HOME/.config/nvim/lua/packer-config/init.lua"
+  nvim --headless -E +'TSUpdateSync' +'quit'
    rm -rf "$SCRIPT_DIR/tmp"
    rm -rf "$SCRIPT_DIR/go"
 }
